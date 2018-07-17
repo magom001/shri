@@ -1,0 +1,17 @@
+{
+  "name": "yandex-academy-shri-task-2",
+  "version": "1.0.0",
+  "description": "Yandex Academy autumn 2018 entry assignment task 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arkady Magomedov",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
+}
