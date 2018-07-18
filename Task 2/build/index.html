@@ -17,12 +17,31 @@
 </head>
 
 <body>
-
+    <!-- 1193.8052083641214 -->
     <span class="input-range input-range_sun" data-range-min="-18" data-range-max="+30">
-        <input type="range" orient="vfdertical" min="18" max="30" />
+        <input type="range" min="18" max="30" />
     </span>
-
+    <div>
+        <input value="0" type="range" min="0" max="1194" id="test-range" />
+        <svg width="400" height="400" viewBox="0 0 400 400">
+            <mask id="m-lines">
+                <circle cx="200" cy="200" r="190" fill="none" stroke="#e6e6e6" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="4 4"></circle>
+            </mask>
+            <circle cx="200" cy="200" r="190" fill="none" stroke="#e6e6e6" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="4 4"></circle>
+            <circle id="scale" stroke-dasharray="1193.805" stroke-dashoffset="0" mask="url(#m-lines)" cx="200" cy="200" r="190" fill="none"
+                stroke="yellow" stroke-width="20"></circle>
+        </svg>
+    </div>
     <!-- <script src="js/scripts.js"></script> -->
+    <script>
+
+        const range = document.getElementById("test-range");
+        const scale = document.getElementById("scale");
+        range.addEventListener("input", (e) => {
+            scale.style.strokeDashoffset = e.target.value;
+        });
+    </script>
+
 </body>
 
 </html>
