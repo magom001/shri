@@ -9,8 +9,11 @@
   "author": "Arkady Magomedov",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4"
   }
