@@ -17,12 +17,65 @@
 </head>
 
 <body>
-
+    <!-- 1193.8052083641214 -->
     <span class="input-range input-range_sun" data-range-min="-18" data-range-max="+30">
-        <input type="range" orient="vfdertical" min="18" max="30" />
+        <input type="range" min="18" max="30" />
     </span>
+    <div>
+        <input value="0" type="range" min="0" max="1194" id="test-range" />
+        <svg width="400" height="400" viewBox="0 0 400 400">
+            <style>
+                text {
+                    font: 100px Verdana, Helvetica, Arial, sans-serif;
+                    font-weight: bold;
+                    fill: white;
+                }
+            </style>
+            <mask id="m-lines">
+                <circle cx="200" cy="200" r="190" fill="none" stroke="#e6e6e6" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="1 4"
+                />
+            </mask>
+            <circle cx="200" cy="200" r="190" fill="none" stroke="#e6e6e6" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="1 4"
+                transform="rotate(90 200 200)" />
+            <circle id="scale" stroke-dasharray="1193.805" stroke-dashoffset="1193.805" mask="url(#m-lines)" cx="200" cy="200" r="190"
+                fill="none" stroke="yellow" stroke-width="20" transform="rotate(90 200 200)" />
 
+            <g transform="translate(200 200) rotate(90 0 0)">
+                <g id="knob" transform="rotate(0 0 0)">
+                    <circle cx="0" cy="0" r="160" fill="#aaa" />
+                    <line x1="0" y1="0" x2="160" y2="0" style="stroke:rgb(255,0,0);stroke-width:1" />
+                </g>
+            </g>
+            <text id="display" x="200" y="230" text-anchor="middle">
+                +18
+            </text>
+        </svg>
+    </div>
     <!-- <script src="js/scripts.js"></script> -->
+    <script>
+        function mapScaleToRange(v, min, max, range) {
+            const step = range / (max - min);
+            return Math.floor(v / step + min);
+        }
+
+        function rotateKnob(v, range) {
+            const arcPerDegree = range / 360;
+
+            return v / arcPerDegree;
+        }
+
+        const range = document.getElementById("test-range");
+        const scale = document.getElementById("scale");
+        const display = document.getElementById("display");
+        const knob = document.getElementById("knob");
+
+        range.addEventListener("input", (e) => {
+            display.childNodes[0].textContent = `+${mapScaleToRange(e.target.value, 18, 30, 1194)}`;
+            knob.setAttribute("transform", `rotate(${rotateKnob(e.target.value, 1194)} 0 0)`)
+            scale.style.strokeDashoffset = 1194 - e.target.value;
+        });
+    </script>
+
 </body>
 
 </html>
