@@ -144,45 +144,51 @@ body {
   padding: 100px;
 }
 
-input[type="range"] {
+.input-range {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+}
+
+.input-range > input[type="range"] {
   -webkit-appearance: none;
   /* Hides the slider so that custom slider can be made */
-  width: 580px;
+  width: 584px;
   /* Specific width is required for Firefox. */
   height: 60px;
   outline: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
+.input-range > input[type="range"]::-webkit-slider-runnable-track {
   /* common styles */
   background-image: -webkit-gradient(linear, right top, left top, from(#ff9e00), to(#ffe682));
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
-  width: 580px;
+  width: 584px;
   height: 60px;
   border-radius: 60px;
 }
 
-input[type="range"]::-moz-range-track {
+.input-range > input[type="range"]::-moz-range-track {
   /* common styles */
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
-  width: 580px;
+  width: 584px;
   height: 60px;
   border-radius: 60px;
 }
 
-input[type="range"]::-ms-track {
+.input-range > input[type="range"]::-ms-track {
   /* common styles */
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
-  width: 580px;
+  width: 584px;
   height: 60px;
   border-radius: 60px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.input-range > input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.input-range > input[type="range"]::-webkit-slider-thumb {
   width: 64px;
   height: 64px;
   border-radius: 100%;
@@ -192,7 +198,7 @@ input[type="range"]::-webkit-slider-thumb {
           box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
 }
 
-input[type="range"]::-moz-range-thumb {
+.input-range > input[type="range"]::-moz-range-thumb {
   width: 64px;
   height: 64px;
   border-radius: 100%;
@@ -201,7 +207,7 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
 }
 
-input[type="range"]::-ms-thumb {
+.input-range > input[type="range"]::-ms-thumb {
   margin-top: 0;
   width: 64px;
   height: 64px;
@@ -211,23 +217,8 @@ input[type="range"]::-ms-thumb {
   box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
 }
 
-input[type="range"]::-ms-tooltip {
+.input-range > input[type="range"]::-ms-tooltip {
   display: none;
-}
-
-input[type="range"][orient="vertical"] {
-  -webkit-writing-mode: bt-lr;
-      -ms-writing-mode: bt-lr;
-          writing-mode: bt-lr;
-  /* IE */
-  -webkit-appearance: slider-vertical;
-  /* WebKit */
-}
-
-.input-range {
-  display: inline-block;
-  position: relative;
-  height: 60px;
 }
 
 .input-range::before, .input-range::after {
@@ -242,7 +233,6 @@ input[type="range"][orient="vertical"] {
 }
 
 .input-range::before {
-  top: calc(50% - 8px);
   left: 20px;
   content: attr(data-range-min);
 }
@@ -250,6 +240,37 @@ input[type="range"][orient="vertical"] {
 .input-range::after {
   right: 20px;
   content: attr(data-range-max);
+}
+
+.input-range_vertical {
+  width: 60px;
+  height: 584px;
+}
+
+.input-range_vertical > input[type="range"] {
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotate(-90deg) translateX(-100%);
+          transform: rotate(-90deg) translateX(-100%);
+}
+
+.input-range_vertical::before {
+  left: 0px;
+  top: 524px;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  line-height: 60px;
+  z-index: 1;
+}
+
+.input-range_vertical::after {
+  right: 0px;
+  top: 0px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 69px;
 }
 
 .input-range_sun::before {
@@ -270,6 +291,48 @@ input[type="range"][orient="vertical"] {
   height: 36px;
   top: 14px;
   right: 16px;
+}
+
+.btn {
+  background: #ffffff;
+  border-radius: 20px;
+  font-family: Arial-BoldMT;
+  font-size: 13px;
+  color: #333333;
+  letter-spacing: 0;
+  border: none;
+  outline: none;
+  margin-bottom: 1px;
+  padding: 7px 14px;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn_primary {
+  color: #000000;
+  background: #ffd93e;
+}
+
+.btn_large {
+  padding: 24px 30px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+.btn_flex {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 /*# sourceMappingURL=main.css.map */

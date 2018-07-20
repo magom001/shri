@@ -1,61 +1,62 @@
-@mixin track() {
+@mixin track($gradient, $width, $height) {
   /* common styles */
-  background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
-  width: 580px;
-  height: 60px;
+  background-image: $gradient; // linear-gradient(to left, #ff9e00, #ffe682 100%);
+  width: $width; // 580px;
+  height: $height; // 60px;
   border-radius: 60px;
 }
 
-@mixin thumb() {
-  width: 64px;
-  height: 64px;
+@mixin thumb($width, $height) {
+  width: $width + 4px;
+  height: $height + 4px;
   border-radius: 100%;
   margin-top: -2px;
   border: 4px solid white;
   box-shadow: 0px 0px 0 4px rgba(#333333, 0.1) inset;
 }
-input[type="range"] {
-  -webkit-appearance: none;
-  /* Hides the slider so that custom slider can be made */
-  width: 580px; /* Specific width is required for Firefox. */
-  height: 60px;
-  outline: none;
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-  }
-  &::-webkit-slider-runnable-track {
-    @include track;
-  }
-  &::-moz-range-track {
-    @include track;
-  }
-  &::-ms-track {
-    @include track;
-  }
-  &::-webkit-slider-thumb {
-    @include thumb;
-  }
-  &::-moz-range-thumb {
-    @include thumb;
-  }
-  &::-ms-thumb {
-    margin-top: 0;
-    @include thumb;
-  }
-  &::-ms-tooltip {
-    display: none;
-  }
-  &[orient="vertical"] {
-    writing-mode: bt-lr;
-    /* IE */
-    -webkit-appearance: slider-vertical; /* WebKit */
-  }
-}
 
 .input-range {
+  $gradient: linear-gradient(to left, #ff9e00, #ffe682 100%);
+  $width: 584px;
+  $height: 60px;
+
   display: inline-block;
   position: relative;
-  height: 60px;
+  height: $height;
+
+  & > input[type="range"] {
+    -webkit-appearance: none;
+    /* Hides the slider so that custom slider can be made */
+    width: $width; /* Specific width is required for Firefox. */
+    height: $height;
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+      @include track($gradient, $width, $height);
+    }
+    &::-moz-range-track {
+      @include track($gradient, $width, $height);
+    }
+    &::-ms-track {
+      @include track($gradient, $width, $height);
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+    &::-webkit-slider-thumb {
+      @include thumb($height, $height);
+    }
+    &::-moz-range-thumb {
+      @include thumb($height, $height);
+    }
+    &::-ms-thumb {
+      margin-top: 0;
+      @include thumb($height, $height);
+    }
+    &::-ms-tooltip {
+      display: none;
+    }
+  }
 
   &::before,
   &::after {
@@ -73,10 +74,38 @@ input[type="range"] {
     left: 20px;
     content: attr(data-range-min);
   }
-
   &::after {
     right: 20px;
     content: attr(data-range-max);
+  }
+
+  &_vertical {
+    width: $height;
+    height: $width;
+
+    & > input[type="range"] {
+      transform-origin: left top;
+      transform: rotate(-90deg) translateX(-100%);
+    }
+
+    &::before {
+      left: 0px;
+      top: $width - 60px;
+      height: 60px;
+      width: 60px;
+      text-align: center;
+      line-height: 60px;
+      z-index: 1;
+    }
+
+    &::after {
+      right: 0px;
+      top: 0px;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      line-height: 69px;
+    }
   }
 
   &_sun {
@@ -84,18 +113,15 @@ input[type="range"] {
       content: "";
       background-image: url(../assets/images/icon_sun.svg);
       background-size: cover;
-
       width: 36px;
       height: 36px;
       top: 14px;
       left: 16px;
     }
-
     &::after {
       content: "";
       background-image: url(../assets/images/icon_sun.svg);
       background-size: cover;
-
       width: 36px;
       height: 36px;
       top: 14px;

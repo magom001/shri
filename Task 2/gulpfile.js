@@ -39,14 +39,6 @@ gulp.task("sass", function() {
     .pipe(gulp.dest(outputCSS));
 });
 
-// gulp.task("watch", function() {
-//   return gulp.watch(input, ["sass"]).on("change", function(event) {
-//     console.log(
-//       "File " + event.path + " was " + event.type + ", running tasks..."
-//     );
-//   });
-// });
-
 gulp.task("watch", function() {
   gulp.watch(inputSCSS, ["sass"]);
   gulp.watch(inputJS, ["babel"]);
