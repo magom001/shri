@@ -17,7 +17,9 @@
 </head>
 
 <body>
-    <!-- 1193.8052083641214 -->
+    <div>
+        <input data-size="400" type="range" class="dial" value="0" min="-10" max="10" />
+    </div>
     <div>
         <span class="input-range input-range_sun" data-range-min="-18" data-range-max="+30">
             <input type="range" min="18" max="30" />
@@ -26,36 +28,7 @@
             <input type="range" min="18" max="30" />
         </span>
     </div>
-    <div>
-        <input value="0" type="range" min="0" max="1194" id="test-range" />
-        <svg width="400" height="400" viewBox="0 0 400 400">
-            <style>
-                text {
-                    font: 100px Verdana, Helvetica, Arial, sans-serif;
-                    font-weight: bold;
-                    fill: white;
-                }
-            </style>
-            <mask id="m-lines">
-                <circle cx="200" cy="200" r="190" fill="none" stroke="#fff" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="1 4"
-                />
-            </mask>
-            <circle cx="200" cy="200" r="190" fill="none" stroke="#e6e6e6" stroke-width="20" stroke-dashoffset="4000" stroke-dasharray="1 4"
-                transform="rotate(90 200 200)" />
-            <circle id="scale" stroke-dasharray="1193.805" stroke-dashoffset="1193.805" mask="url(#m-lines)" cx="200" cy="200" r="190"
-                fill="none" stroke="red" stroke-width="20" transform="rotate(90 200 200)" />
 
-            <g transform="translate(200 200) rotate(90 0 0)">
-                <g id="knob" transform="rotate(0 0 0)">
-                    <circle cx="0" cy="0" r="160" fill="#aaa" />
-                    <line x1="0" y1="0" x2="160" y2="0" style="stroke:rgb(255,0,0);stroke-width:1" />
-                </g>
-            </g>
-            <text id="display" x="200" y="230" text-anchor="middle">
-                +18
-            </text>
-        </svg>
-    </div>
     <div>
         <button class="btn">Btn</button>
         <button class="btn btn_primary">Primary btn</button>
