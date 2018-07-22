@@ -19,7 +19,9 @@
   &__content {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    min-height: 33rem;
+    overflow: hidden;
   }
 
   &__info-wrapper {
@@ -83,7 +85,35 @@
   }
 
   &__status {
+    display: block;
     font-family: Arial-MT;
     font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__weather {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &-location {
+      display: block;
+      font-family: ArialMT;
+      font-size: 1.4rem;
+      color: #858585;
+    }
+
+    &-temperature {
+      font-family: Arial-BoldMT;
+      font-weight: bolder;
+      font-size: 3.6rem;
+      letter-spacing: 0;
+    }
+
+    &-icon {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
   }
 }

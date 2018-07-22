@@ -183,6 +183,14 @@ body {
   background-image: url(../assets/images/icon_temperature.svg);
 }
 
+.icon_sun {
+  background-image: url(../assets/images/icon_sun.svg);
+}
+
+.icon_cloud {
+  background-image: url(../assets/images/cloud-drizzle.svg);
+}
+
 .header {
   padding: 3rem 4rem;
   display: -webkit-box;
@@ -455,9 +463,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-height: 33rem;
+  overflow: hidden;
 }
 
 .widget__info-wrapper {
@@ -524,13 +534,44 @@ body {
 }
 
 .widget__status {
+  display: block;
   font-family: Arial-MT;
   font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.widget__weather {
+  display: inline-block;
+}
+
+.widget__weather:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.widget__weather-location {
+  display: block;
+  font-family: ArialMT;
+  font-size: 1.4rem;
+  color: #858585;
+}
+
+.widget__weather-temperature {
+  font-family: Arial-BoldMT;
+  font-weight: bolder;
+  font-size: 3.6rem;
+  letter-spacing: 0;
+}
+
+.widget__weather-icon {
+  width: 2.6rem;
+  height: 2.6rem;
 }
 
 .action-box {
   position: relative;
   width: 100%;
+  max-width: 20rem;
+  min-height: 10rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -564,6 +605,12 @@ body {
   top: 2rem;
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.action-box__icon_scroll {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-bottom: -0.5rem;
 }
 
 .action-box__action {

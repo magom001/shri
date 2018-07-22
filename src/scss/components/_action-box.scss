@@ -1,6 +1,8 @@
 .action-box {
   position: relative;
   width: 100%;
+  max-width: 20rem;
+  min-height: 10rem;
   flex-grow: 1;
   margin-bottom: 1rem;
   background: #f7f7f7;
@@ -27,6 +29,12 @@
     top: 2rem;
     width: 2.4rem;
     height: 2.4rem;
+
+    &_scroll {
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-bottom: -0.5rem;
+    }
   }
 
   &__action {
