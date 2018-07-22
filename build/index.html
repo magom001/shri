@@ -18,7 +18,7 @@
 
 <body>
     <div>
-        <input data-size="400" type="range" class="dial" value="0" min="-10" max="10" />
+        <input data-size="400" type="range" class="dial" value="0" min="-30" max="30" />
     </div>
     <div>
         <span class="input-range input-range_sun" data-range-min="-18" data-range-max="+30">
@@ -38,30 +38,6 @@
         <button class="btn btn_primary btn_flex btn_large">Large primary button</button>
     </div>
     <script src="js/app.js"></script>
-    <!-- <script>
-        function mapScaleToRange(v, min, max, range) {
-            const step = range / (max - min);
-            return Math.floor(v / step + min);
-        }
-
-        function rotateKnob(v, range) {
-            const arcPerDegree = range / 360;
-
-            return v / arcPerDegree;
-        }
-
-        const range = document.getElementById("test-range");
-        const scale = document.getElementById("scale");
-        const display = document.getElementById("display");
-        const knob = document.getElementById("knob");
-
-        range.addEventListener("input", (e) => {
-            display.childNodes[0].textContent = `+${mapScaleToRange(e.target.value, 18, 30, 1194)}`;
-            knob.setAttribute("transform", `rotate(${rotateKnob(e.target.value, 1194)} 0 0)`)
-            scale.style.strokeDashoffset = 1194 - e.target.value;
-        });
-    </script> -->
-
 </body>
 
 </html>

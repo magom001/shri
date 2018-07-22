@@ -60,8 +60,8 @@ class Dial {
   </mask>
   <use xlink:href="#scale" mask="url(#mask)" stroke="#333333" />
   <!-- 
-  stroke-dashoffset = circumference - circumference / 360 * deg
--->
+    stroke-dashoffset = circumference - circumference / 360 * deg
+  -->
   <use xlink:href="#indicator" class="indicator" mask="url(#scale-mask)" stroke-dashoffset="500" stroke="#F5A623" />
   <circle cx="110" cy="110" r="80" fill="#fff" fill-opacity="1" filter="url(#dropshadow)" />
   <g transform="translate(110 110) rotate(-240)">
@@ -81,6 +81,7 @@ class Dial {
     this.meter = this.svg.querySelector(".meter");
     this.indicator = this.svg.querySelector(".indicator");
     this.display = this.svg.querySelector(".display");
+    this.sector = this.svg.querySelector("#sector");
 
     this.getCenterCoords();
 
@@ -113,6 +114,7 @@ class Dial {
     this.setText((this.initValue - this.min) / this.k);
     this.rotateMeter((this.initValue - this.min) / this.k);
     this.setIndicator((this.initValue - this.min) / this.k);
+    this.rotateSector((this.initValue - this.min) / this.k);
 
     window.addEventListener("resize", this.getCenterCoords.bind(this));
   }
@@ -138,6 +140,7 @@ class Dial {
       }
 
       this.rotateMeter(angle);
+      this.rotateSector(angle);
       this.setIndicator(angle);
       this.setText(angle);
       this.prevAngle = angle;
@@ -150,6 +153,32 @@ class Dial {
       x: left + width / 2,
       y: top + height / 2
     };
+  }
+
+  rotateSector(angle) {
+    this.sector.setAttribute("transform", `rotate(${120 + angle} 110 110)`);
+    if (angle < 270) {
+      this.sector.setAttribute(
+        "stroke-dashoffset",
+        `${(this.circumference * (30 + angle)) / 360}`
+      );
+      this.sector.setAttribute(
+        "stroke-dasharray",
+        `${this.circumference - (this.circumference * 30) / 360}`
+      );
+    } else {
+      this.sector.setAttribute(
+        "stroke-dashoffset",
+        `${(this.circumference * (30 + angle)) / 360 +
+          (this.circumference / 360) * (angle - 270)}`
+      );
+      this.sector.setAttribute(
+        "stroke-dasharray",
+        `${this.circumference -
+          (this.circumference * 30) / 360 +
+          (this.circumference / 360) * (angle - 270)}`
+      );
+    }
   }
 
   rotateMeter(angle) {
@@ -169,7 +198,7 @@ class Dial {
     const value = Math.round(this.mapToScale(angle));
     this.dial.setAttribute("value", value);
     const displayValue = value > 0 ? `+${value}` : value;
-    this.display.childNodes[0].textContent = value;
+    this.display.childNodes[0].textContent = displayValue;
   }
 }
 

@@ -39,12 +39,13 @@ function () {
       this.initValue = this.dial.getAttribute("value");
       this.k = (this.max - this.min) / 300;
       this.dial.style.display = "none";
-      this.dial.insertAdjacentHTML("afterend", "<svg shape-rendering=\"geometricPrecision\" width=\"".concat(this.dial.dataset.size, "\" height=\"").concat(this.dial.dataset.size, "\" viewBox=\"0 0 220 220\">\n  <style>\n      text {\n          font: 60px Verdana, Helvetica, Arial, sans-serif;\n          font-weight: bold;\n          fill: #333333;\n          user-select: none;\n      }\n  </style>\n  <defs>\n      <circle id=\"sector\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dashoffset=\"").concat(this.circumference * 30 / 360, "\" stroke-dasharray=\"").concat(this.circumference - this.circumference * 30 / 360, "\"\n          stroke=\"white\" stroke-width=\"20\" fill=\"none\" />\n      <circle id=\"indicator\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dasharray=\"565.4866776461628\" stroke-width=\"20\"\n          fill=\"none\" />\n      <circle id=\"scale\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dasharray=\"1 4\" stroke-width=\"20\" fill=\"none\"\n      />\n\n      <filter xmlns=\"http://www.w3.org/2000/svg\" id=\"dropshadow\" height=\"130%\">\n          <feGaussianBlur in=\"SourceAlpha\" stdDeviation=\"2\" />\n          <feOffset dx=\"0\" dy=\"2\" result=\"offsetblur\" />\n          <feMerge>\n              <feMergeNode/>\n              <feMergeNode in=\"SourceGraphic\" />\n          </feMerge>\n      </filter>\n  </defs>\n  <mask id=\"mask\">\n      <use xlink:href=\"#sector\" />\n  </mask>\n  <mask id=\"scale-mask\">\n      <use xlink:href=\"#scale\" stroke=\"white\" />\n  </mask>\n  <use xlink:href=\"#scale\" mask=\"url(#mask)\" stroke=\"#333333\" />\n  <!-- \n  stroke-dashoffset = circumference - circumference / 360 * deg\n-->\n  <use xlink:href=\"#indicator\" class=\"indicator\" mask=\"url(#scale-mask)\" stroke-dashoffset=\"500\" stroke=\"#F5A623\" />\n  <circle cx=\"110\" cy=\"110\" r=\"80\" fill=\"#fff\" fill-opacity=\"1\" filter=\"url(#dropshadow)\" />\n  <g transform=\"translate(110 110) rotate(-240)\">\n      <g class=\"meter\" transform=\"rotate(57)\">\n          <circle cx=\"0\" cy=\"0\" r=\"70\" fill=\"#fff\" fill-opacity=\"1\" />\n          <polygon points=\"0,-5 5,0 0,5\" style=\"fill:#333333;stroke:none;\" transform=\"translate(75 0)\" />\n      </g>\n  </g>\n  <text class=\"display\" x=\"110\" y=\"130\" text-anchor=\"middle\">\n      +18\n  </text>\n  <circle cx=\"110\" cy=\"110\" r=\"100\" fill=\"white\" fill-opacity=\"0\" class=\"knob\" />\n</svg>"));
+      this.dial.insertAdjacentHTML("afterend", "<svg shape-rendering=\"geometricPrecision\" width=\"".concat(this.dial.dataset.size, "\" height=\"").concat(this.dial.dataset.size, "\" viewBox=\"0 0 220 220\">\n  <style>\n      text {\n          font: 60px Verdana, Helvetica, Arial, sans-serif;\n          font-weight: bold;\n          fill: #333333;\n          user-select: none;\n      }\n  </style>\n  <defs>\n      <circle id=\"sector\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dashoffset=\"").concat(this.circumference * 30 / 360, "\" stroke-dasharray=\"").concat(this.circumference - this.circumference * 30 / 360, "\"\n          stroke=\"white\" stroke-width=\"20\" fill=\"none\" />\n      <circle id=\"indicator\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dasharray=\"565.4866776461628\" stroke-width=\"20\"\n          fill=\"none\" />\n      <circle id=\"scale\" cx=\"110\" cy=\"110\" r=\"90\" transform=\"rotate(120 110 110)\" stroke-dasharray=\"1 4\" stroke-width=\"20\" fill=\"none\"\n      />\n\n      <filter xmlns=\"http://www.w3.org/2000/svg\" id=\"dropshadow\" height=\"130%\">\n          <feGaussianBlur in=\"SourceAlpha\" stdDeviation=\"2\" />\n          <feOffset dx=\"0\" dy=\"2\" result=\"offsetblur\" />\n          <feMerge>\n              <feMergeNode/>\n              <feMergeNode in=\"SourceGraphic\" />\n          </feMerge>\n      </filter>\n  </defs>\n  <mask id=\"mask\">\n      <use xlink:href=\"#sector\" />\n  </mask>\n  <mask id=\"scale-mask\">\n      <use xlink:href=\"#scale\" stroke=\"white\" />\n  </mask>\n  <use xlink:href=\"#scale\" mask=\"url(#mask)\" stroke=\"#333333\" />\n  <!-- \n    stroke-dashoffset = circumference - circumference / 360 * deg\n  -->\n  <use xlink:href=\"#indicator\" class=\"indicator\" mask=\"url(#scale-mask)\" stroke-dashoffset=\"500\" stroke=\"#F5A623\" />\n  <circle cx=\"110\" cy=\"110\" r=\"80\" fill=\"#fff\" fill-opacity=\"1\" filter=\"url(#dropshadow)\" />\n  <g transform=\"translate(110 110) rotate(-240)\">\n      <g class=\"meter\" transform=\"rotate(57)\">\n          <circle cx=\"0\" cy=\"0\" r=\"70\" fill=\"#fff\" fill-opacity=\"1\" />\n          <polygon points=\"0,-5 5,0 0,5\" style=\"fill:#333333;stroke:none;\" transform=\"translate(75 0)\" />\n      </g>\n  </g>\n  <text class=\"display\" x=\"110\" y=\"130\" text-anchor=\"middle\">\n      +18\n  </text>\n  <circle cx=\"110\" cy=\"110\" r=\"100\" fill=\"white\" fill-opacity=\"0\" class=\"knob\" />\n</svg>"));
       this.svg = this.dial.nextSibling;
       this.knob = this.svg.querySelector(".knob");
       this.meter = this.svg.querySelector(".meter");
       this.indicator = this.svg.querySelector(".indicator");
       this.display = this.svg.querySelector(".display");
+      this.sector = this.svg.querySelector("#sector");
       this.getCenterCoords();
       this.knob.addEventListener("mousedown", function () {
         _this.isDragging = true;
@@ -74,6 +75,7 @@ function () {
       this.setText((this.initValue - this.min) / this.k);
       this.rotateMeter((this.initValue - this.min) / this.k);
       this.setIndicator((this.initValue - this.min) / this.k);
+      this.rotateSector((this.initValue - this.min) / this.k);
       window.addEventListener("resize", this.getCenterCoords.bind(this));
     }
   }, {
@@ -97,6 +99,7 @@ function () {
         }
 
         this.rotateMeter(angle);
+        this.rotateSector(angle);
         this.setIndicator(angle);
         this.setText(angle);
         this.prevAngle = angle;
@@ -115,6 +118,19 @@ function () {
         x: left + width / 2,
         y: top + height / 2
       };
+    }
+  }, {
+    key: "rotateSector",
+    value: function rotateSector(angle) {
+      this.sector.setAttribute("transform", "rotate(".concat(120 + angle, " 110 110)"));
+
+      if (angle < 270) {
+        this.sector.setAttribute("stroke-dashoffset", "".concat(this.circumference * (30 + angle) / 360));
+        this.sector.setAttribute("stroke-dasharray", "".concat(this.circumference - this.circumference * 30 / 360));
+      } else {
+        this.sector.setAttribute("stroke-dashoffset", "".concat(this.circumference * (30 + angle) / 360 + this.circumference / 360 * (angle - 270)));
+        this.sector.setAttribute("stroke-dasharray", "".concat(this.circumference - this.circumference * 30 / 360 + this.circumference / 360 * (angle - 270)));
+      }
     }
   }, {
     key: "rotateMeter",
@@ -138,7 +154,7 @@ function () {
       var value = Math.round(this.mapToScale(angle));
       this.dial.setAttribute("value", value);
       var displayValue = value > 0 ? "+".concat(value) : value;
-      this.display.childNodes[0].textContent = value;
+      this.display.childNodes[0].textContent = displayValue;
     }
   }]);
 
