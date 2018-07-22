@@ -1,0 +1,15 @@
+.icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &_dbl-arrow {
+    background-image: url(../assets/images/dbl-arrow.svg);
+  }
+
+  &_temperature {
+    background-image: url(../assets/images/icon_temperature.svg);
+  }
+}

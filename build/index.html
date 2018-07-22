@@ -17,26 +17,70 @@
 </head>
 
 <body>
-    <div>
-        <input data-size="400" type="range" class="dial" value="0" min="-30" max="30" />
-    </div>
-    <div>
-        <span class="input-range input-range_sun" data-range-min="-18" data-range-max="+30">
-            <input type="range" min="18" max="30" />
-        </span>
-        <span class="input-range input-range_vertical input-range_sun" data-range-min="-18" data-range-max="+30">
-            <input type="range" min="18" max="30" />
-        </span>
-    </div>
+    <section id="page-wrapper">
+        <header class="header">
+            <picture class="header__logo">
+                <source media="(min-width: 256rem)" srcset="assets/images/logo@2x.png">
+                <source srcset="assets/images/logo@1x.png 1x, assets/images/logo@2x.png 2x">
+                <img src="assets/images/logo@1x.png" alt="Yandex Home Logo">
+            </picture>
+            <ul class="menu">
+                <li class="menu__item menu__item_active">Сводка</li>
+                <li class="menu__item">Устройства</li>
+                <li class="menu__item">Сценарии</li>
+            </ul>
+        </header>
+        <section class="content">
 
-    <div>
-        <button class="btn">Btn</button>
-        <button class="btn btn_primary">Primary btn</button>
-    </div>
-    <div style="display:flex">
-        <button class="btn btn_flex btn_large">Large default button</button>
-        <button class="btn btn_primary btn_flex btn_large">Large primary button</button>
-    </div>
+            <article class="widget widget_main">
+                <header class="widget__header">
+                    <h1 class="widget__title">Главное</h1>
+                </header>
+                <section class="widget__content">
+                    <div class="widget__info-wrapper">
+                        <div class="widget__info">
+                            <div class="widget__column_left">
+                                <span class="widget__greeting">Привет, Геннадий!</span>
+                                <span class="widget__status">Двери и окна закрыты, сигнализация включена.</span>
+                            </div>
+                            <div class="widget__column_right">
+                                <div class="action-box">
+                                    <i class="action-box__icon icon icon_temperature"></i>
+                                    <div class="action-box__action">Phillips Cooler
+                                        <span class="action-box__subscript">Начнет охлаждать в 16:30</span>
+                                    </div>
+
+                                </div>
+                                <div class="action-box">Action</div>
+                                <div class="action-box action-box_scroll">
+                                    <i class="icon icon_dbl-arrow"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <article class="widget">
+                <header class="widget__header">
+                    <h1 class="widget__title">Избранные сценарии</h1>
+                </header>
+                <section class="widget__content">
+                    <div class="action-box">
+                        <div class="action-box__action">Включить весь свет в доме и во дворе</div>
+                    </div>
+                    <div class="action-box">Action</div>
+                    <div class="action-box">Action</div>
+                </section>
+            </article>
+            <article class="widget">
+                <header class="widget__header">
+                    <h1 class="widget__title">Избранные устройства</h1>
+                </header>
+            </article>
+        </section>
+    </section>
+
     <script src="js/app.js"></script>
 </body>
 

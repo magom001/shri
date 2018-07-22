@@ -1,23 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
-    <title>icon_temperature</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="v1-2-1-home-dashboard" transform="translate(-464.000000, -269.000000)">
-            <rect fill="#F8F8F8" x="0" y="0" width="1366" height="768"></rect>
-            <g id="status" transform="translate(39.000000, 195.000000)">
-                <g id="Group" transform="translate(1.000000, 40.000000)">
-                    <g id="Widget" transform="translate(410.000000, 20.000000)">
-                        <g id="icon_temperature" transform="translate(14.000000, 14.000000)">
-                            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
-                            <path d="M14.0003489,14.76 L14.0003489,3.5 C14.0003489,2.11928813 12.8810608,1 11.5003489,1 C10.119637,1 9.00034891,2.11928813 9.00034891,3.5 L9.00034891,14.76 C7.35223452,15.8611927 6.61873572,17.911099 7.19410587,19.8079004 C7.76947602,21.7047019 9.51820196,23.0016574 11.5003489,23.0016574 C13.4824959,23.0016574 15.2312218,21.7047019 15.806592,19.8079004 C16.3819621,17.911099 15.6484633,15.8611927 14.0003489,14.76 Z" id="Shape" stroke-opacity="0.4" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <circle id="Oval-2" fill-opacity="0.1" fill="#333333" fill-rule="nonzero" cx="11.5" cy="18.5" r="3.5"></circle>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24px"
+   height="24px"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="icon_temperature.svg">
+  <metadata
+     id="metadata23">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="850"
+     id="namedview21"
+     showgrid="false"
+     inkscape:zoom="1.7383042"
+     inkscape:cx="-22.919812"
+     inkscape:cy="-93.616143"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">icon_temperature</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="translate(0,-8.285e-4)"
+     id="icon_temperature">
+    <rect
+       style="fill-rule:nonzero"
+       height="24"
+       width="24"
+       y="0"
+       x="0"
+       id="Rectangle" />
+    <path
+       style="stroke:#333333;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.4"
+       inkscape:connector-curvature="0"
+       id="Shape"
+       d="m 14.000349,14.76 0,-11.26 c 0,-1.3807119 -1.119288,-2.5 -2.5,-2.5 -1.380712,0 -2.5000001,1.1192881 -2.5000001,2.5 l 0,11.26 c -1.6481144,1.101193 -2.3816132,3.151099 -1.806243,5.0479 0.5753701,1.896802 2.3240961,3.193757 4.3062431,3.193757 1.982147,0 3.730873,-1.296955 4.306243,-3.193757 0.57537,-1.896801 -0.158129,-3.946707 -1.806243,-5.0479 z" />
+    <circle
+       style="fill:#333333;fill-opacity:0.1;fill-rule:nonzero"
+       r="3.5"
+       cy="18.5"
+       cx="11.5"
+       id="Oval-2" />
+  </g>
 </svg>

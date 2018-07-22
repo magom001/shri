@@ -1,0 +1,50 @@
+.action-box {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  background: #f7f7f7;
+  border-radius: 2rem;
+
+  &_scroll {
+    min-height: 4rem;
+    border-radius: 2rem 2rem 0 0;
+    flex-grow: 0;
+    align-self: flex-end;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 4rem;
+  }
+
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0 0.2rem 0.6rem 0 rgba(197, 186, 186, 0.5);
+  }
+
+  &__icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &__action {
+    position: absolute;
+    padding: 0 1.5rem;
+    bottom: 1.5rem;
+    letter-spacing: 0;
+    font-size: 1.4rem;
+    font-weight: bolder;
+  }
+
+  &__subscript {
+    display: block;
+    font-family: ArialMT;
+    font-size: 1.2rem;
+    color: #858585;
+    letter-spacing: 0;
+    font-weight: normal;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,4 +1,15 @@
+@import "vars";
+
 @font-face {
   font-family: Arial-BoldMT;
   src: url(../assets/fonts/Arial-BoldMT.ttf);
+}
+
+@font-face {
+  font-family: Arial-MT;
+  src: url(../assets/fonts/Arial-MT.ttf);
+}
+
+body {
+  color: $defaultTextColor;
 }

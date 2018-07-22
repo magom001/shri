@@ -92,6 +92,11 @@ video {
   vertical-align: baseline;
 }
 
+html {
+  font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
+  font-family: Arial-BoldMT;
+}
+
 /* HTML5 display-role reset for older browsers */
 
 article,
@@ -141,4 +146,13 @@ q {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
