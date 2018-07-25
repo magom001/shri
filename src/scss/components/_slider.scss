@@ -15,6 +15,40 @@
   box-shadow: 0px 0px 0 4px rgba(#333333, 0.1) inset;
 }
 
+@mixin vertical($width, $height) {
+  width: $height;
+  height: $width;
+  & > input[type="range"] {
+    transform-origin: left top;
+    transform: rotate(-90deg) translateX(-100%);
+  }
+  &::before,
+  &::after {
+    height: 60px;
+    width: 60px;
+    text-align: center;
+  }
+  &::before {
+    left: 0px;
+    top: $width - 60px;
+    line-height: 60px;
+    z-index: 1;
+  }
+  &::after {
+    right: 0px;
+    top: 0px;
+    line-height: 69px;
+  }
+  &.range-slider_sun {
+    &::before {
+      transform: scale(0.6) translateY(-12%);
+    }
+    &::after {
+      transform: scale(0.6) translateY(12%);
+    }
+  }
+}
+
 /* *
  * IE */
 .range-slider {
@@ -134,36 +168,9 @@
     }
   }
   &_vertical {
-    width: $height;
-    height: $width;
-    & > input[type="range"] {
-      transform-origin: left top;
-      transform: rotate(-90deg) translateX(-100%);
-    }
-    &::before,
-    &::after {
-      height: 60px;
-      width: 60px;
-      text-align: center;
-    }
-    &::before {
-      left: 0px;
-      top: $width - 60px;
-      line-height: 60px;
-      z-index: 1;
-    }
-    &::after {
-      right: 0px;
-      top: 0px;
-      line-height: 69px;
-    }
-    &.range-slider_sun {
-      &::before {
-        transform: scale(0.6) translateY(-12%);
-      }
-      &::after {
-        transform: scale(0.6) translateY(12%);
-      }
-    }
+    @include vertical($width, $height);
+  }
+  @include phone {
+    @include vertical($width, $height);
   }
 }

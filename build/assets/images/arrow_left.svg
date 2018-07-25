@@ -1,0 +1,6 @@
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="7.727" width="13.125" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8.5601264 7.7269745" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <defs>
+  <path id="path" d="m7.5 11.727c-0.3863 0-0.6235-0.155-0.9352-0.487l-5.387-5.7463c-0.32039-0.3417-0.32039-0.8957 0-1.2374 0.3203-0.3417 0.8397-0.3417 1.1601 0l5.1621 5.5063 5.162-5.5063c0.32-0.3417 0.84-0.3417 1.16 0 0.321 0.3417 0.321 0.8957 0 1.2374 0 0-3.578 3.8171-5.3676 5.7253-0.3181 0.34-0.5681 0.508-0.9544 0.508z"/>
+ </defs>
+ <use xlink:href="#path" transform="translate(-3.2201 -4)" height="100%" width="100%" y="0" x="0"/>
+</svg>

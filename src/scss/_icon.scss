@@ -20,4 +20,16 @@
   &_cloud {
     background-image: url(../assets/images/cloud-drizzle.svg);
   }
+
+  &_arrow-left {
+    background-image: url(../assets/images/arrow_left.svg);
+    width: 2rem;
+    height: 1.2rem;
+    transform: rotate(90deg);
+  }
+
+  &_arrow-right {
+    @extend .icon_arrow-left;
+    transform: rotate(-90deg);
+  }
 }

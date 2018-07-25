@@ -1,7 +1,8 @@
 @import "../mixins";
 
 .widget {
-  flex: 1 0 50%;
+  flex: 0 0 50%;
+  width: 50%;
 
   @include phone {
     flex: 1 0 100%;
@@ -9,18 +10,53 @@
 
   &__header {
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__title {
     font-size: 1.8rem;
     font-weight: bolder;
   }
+
+  &__scroll {
+    cursor: default;
+    user-select: none;
+
+    &_left,
+    &_right {
+      width: 1.3rem;
+      height: 0.8rem;
+      cursor: pointer;
+    }
+    &_left {
+      transform: rotate(90deg);
+      margin-right: 2rem;
+    }
+    &_right {
+      transform: rotate(-90deg);
+    }
+    &_disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
 }
 
 .widget-scenarios {
   &__content {
-    background-color: rgba(200, 0, 0, 0.5);
     overflow-x: hidden;
+    min-height: 43rem;
+
+    @include phone {
+      overflow-x: auto;
+      min-height: 0rem;
+      width: calc(100vw - 3rem);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 }
 

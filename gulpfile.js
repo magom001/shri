@@ -4,10 +4,12 @@ const sourcemaps = require("gulp-sourcemaps");
 const autoprefixer = require("gulp-autoprefixer");
 const babel = require("gulp-babel");
 const webpack = require("webpack-stream");
+const svgSymbols = require("gulp-svg-symbols");
 
 const webpackConfig = require("./webpack.config.js");
 
 const inputJS = "./src/js/app.js";
+const watchJS = "./src/js/*.js";
 const inputSCSS = "./src/scss/**/*.scss";
 const outputCSS = "./build/css";
 const outputJS = "./build/js";
@@ -40,9 +42,20 @@ gulp.task("sass", function() {
     .pipe(gulp.dest(outputCSS));
 });
 
+gulp.task(`sprites`, function() {
+  return gulp
+    .src(`./build/assets/images/*.svg`)
+    .pipe(
+      svgSymbols({
+        templates: ["default-svg", "default-css", "default-demo"]
+      })
+    )
+    .pipe(gulp.dest(`./build/assets/icons`));
+});
+
 gulp.task("watch", function() {
   gulp.watch(inputSCSS, ["sass"]);
-  gulp.watch(inputJS, ["js"]);
+  gulp.watch(watchJS, ["js"]);
 });
 
 gulp.task("default", ["sass", "js", "watch"]);
