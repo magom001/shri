@@ -3,6 +3,9 @@ const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const autoprefixer = require("gulp-autoprefixer");
 const babel = require("gulp-babel");
+const webpack = require("webpack-stream");
+
+const webpackConfig = require("./webpack.config.js");
 
 const inputJS = "./src/js/app.js";
 const inputSCSS = "./src/scss/**/*.scss";
@@ -18,14 +21,12 @@ const autoprefixerOptions = {
   browsers: ["last 2 versions", "> 5%", "Firefox ESR"]
 };
 
-gulp.task("babel", () =>
+gulp.task("js", () =>
   gulp
-    .src(["node_modules/babel-polyfill/dist/polyfill.min.js", inputJS])
-    .pipe(
-      babel({
-        presets: ["@babel/env"]
-      })
-    )
+
+    .src(inputJS)
+    .pipe(webpack(webpackConfig))
+
     .pipe(gulp.dest(outputJS))
 );
 
@@ -41,7 +42,7 @@ gulp.task("sass", function() {
 
 gulp.task("watch", function() {
   gulp.watch(inputSCSS, ["sass"]);
-  gulp.watch(inputJS, ["babel"]);
+  gulp.watch(inputJS, ["js"]);
 });
 
-gulp.task("default", ["sass", "babel", "watch"]);
+gulp.task("default", ["sass", "js", "watch"]);
