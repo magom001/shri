@@ -117,13 +117,14 @@ class Dial {
     this.rotateSector((this.initValue - this.min) / this.k);
 
     window.addEventListener("resize", this.getCenterCoords.bind(this));
+    window.addEventListener("scroll", this.getCenterCoords.bind(this));
   }
 
   update(e) {
     if (this.isDragging) {
       const mouseCoords = {
-        x: e.pageX,
-        y: e.pageY
+        x: e.clientX,
+        y: e.clientY
       };
       const deltaX = this.center.x - mouseCoords.x;
       const deltaY = this.center.y - mouseCoords.y;

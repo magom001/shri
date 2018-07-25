@@ -20,7 +20,7 @@ const autoprefixerOptions = {
 
 gulp.task("babel", () =>
   gulp
-    .src(inputJS)
+    .src(["node_modules/babel-polyfill/dist/polyfill.min.js", inputJS])
     .pipe(
       babel({
         presets: ["@babel/env"]

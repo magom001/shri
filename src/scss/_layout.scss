@@ -1,5 +1,16 @@
 @import "./mixins";
 
+#page-wrapper {
+  width: 130rem;
+  margin: 0 auto;
+
+  @include phone {
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+  }
+}
+
 .header {
   padding: 3rem 4rem;
   display: flex;
@@ -9,14 +20,6 @@
 
   &__logo {
     margin-right: 3rem;
-  }
-}
-
-#page-wrapper {
-  min-width: 130rem;
-
-  @include phone {
-    min-width: 0;
   }
 }
 
@@ -42,10 +45,6 @@
 
   &__content {
     flex: 0 0 100%;
-    background-color: #c5cae9;
-    &:nth-child(odd) {
-      background-color: red;
-    }
 
     display: flex;
     flex-flow: row wrap;

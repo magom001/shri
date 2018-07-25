@@ -77,14 +77,15 @@ function () {
       this.setIndicator((this.initValue - this.min) / this.k);
       this.rotateSector((this.initValue - this.min) / this.k);
       window.addEventListener("resize", this.getCenterCoords.bind(this));
+      window.addEventListener("scroll", this.getCenterCoords.bind(this));
     }
   }, {
     key: "update",
     value: function update(e) {
       if (this.isDragging) {
         var mouseCoords = {
-          x: e.pageX,
-          y: e.pageY
+          x: e.clientX,
+          y: e.clientY
         };
         var deltaX = this.center.x - mouseCoords.x;
         var deltaY = this.center.y - mouseCoords.y;

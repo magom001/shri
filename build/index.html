@@ -9,6 +9,8 @@
     <meta name="description" content="Yandex Academy Frontend School">
     <meta name="author" content="Arkady Magomedov">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="css/main.css?v=1.0">
 
     <!--[if lt IE 9]>
@@ -215,6 +217,36 @@
         </footer>
     </section>
 
+    <!-- MODAL -->
+    <div class="modal">
+        <div class="modal__window">
+            <div class="modal__wrapper">
+                <div class="modal__header">
+                    <div class="modal__device">
+                        <h1 class="modal__name">Xiamoi Warm Floor</h1>
+                        <span class="modal__status">Включено</span>
+                    </div>
+                    <div class="modal__indication">
+                        <span class="modal__indication-digit">+23</span>
+                        <i class="icon icon_temperature modal__indication-icon"></i>
+                    </div>
+                </div>
+                <div class="modal__content">
+                    <!-- <span class="input-range input-range_rainbow" data-range-min="-18" data-range-max="+30">
+                    <input type="range" min="18" max="30" />
+                </span> -->
+                    <input data-size="221" type="range" class="dial" value="0" min="-30" max="30" />
+                </div>
+            </div>
+            <div class="modal__controls">
+                <button class="modal__controls-button btn btn_primary btn_large btn_flex">Применить</button>
+                <button class="modal__controls-button btn btn_large btn_flex">Закрыть</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/polyfill.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 

@@ -1,0 +1,122 @@
+@import "../mixins";
+
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(51, 51, 51, 0.5);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999999;
+
+  @include phone {
+    padding: 1.6rem;
+  }
+
+  &__window {
+    width: 63rem;
+    @include phone {
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+
+    @include phone {
+      flex-grow: 1;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__device {
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__name {
+    font-family: Arial-BoldMT;
+    font-size: 2.7rem;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+
+  &__status {
+    font-family: ArialMT;
+    font-size: 1.4rem;
+    color: #333333;
+  }
+
+  &__indication {
+    line-height: 1.4rem;
+
+    @include phone {
+      display: none;
+    }
+
+    &-digit {
+      font-family: Arial-BoldMT;
+      font-size: 3.6rem;
+      color: #333333;
+      letter-spacing: 0;
+      vertical-align: super;
+    }
+
+    &-icon {
+      width: 3.8rem;
+      height: 4rem;
+      vertical-align: sub;
+    }
+  }
+
+  &__controls {
+    flex-grow: 1;
+    display: flex;
+
+    @include phone {
+      flex-wrap: wrap;
+      flex-grow: 0;
+    }
+
+    &-button {
+      flex: 1 1 50%;
+      @include phone {
+        flex: 1 1 100%;
+      }
+    }
+
+    &-button:first-child {
+      margin-right: 1rem;
+      @include phone {
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+    }
+    &-button:last-child {
+      margin-left: 1rem;
+      @include phone {
+        margin-left: 0;
+      }
+    }
+  }
+}
