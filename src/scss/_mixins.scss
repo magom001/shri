@@ -27,7 +27,7 @@ $desktop-width: 1024px;
 }
 
 @mixin Edge {
-  @supports (-ms-accelerator: true) {
+  @supports (-ms-ime-align: auto) {
     @content;
   }
 }

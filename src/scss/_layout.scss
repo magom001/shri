@@ -2,6 +2,7 @@
 
 #page-wrapper {
   min-width: 133rem;
+  height: 100vh;
   margin: 0 auto;
   filter: blur(0px);
   transition: 0.3s -webkit-filter linear;
@@ -13,8 +14,10 @@
   @include phone {
     min-width: 0rem;
     width: 100vw;
+    height: unset;
     margin: 0;
     overflow-x: hidden;
+    min-height: 100vh;
   }
 }
 
@@ -24,6 +27,11 @@
   align-items: center;
   justify-content: flex-start;
   border-bottom: 1px solid #f0f0f0;
+
+  @include phone {
+    padding: 2rem 3rem;
+    justify-content: space-between;
+  }
 
   &__logo {
     margin-right: 3rem;
@@ -64,7 +72,7 @@
 
     &:after {
       content: "";
-      // flex: auto;
+      flex: 1 0 0%;
     }
 
     @include phone {
@@ -73,12 +81,9 @@
   }
 
   &__item {
-    flex-basis: 31%;
+    flex-basis: calc(100% / 3 - 1rem);
     &:not(:nth-child(3n + 3)) {
-      margin-right: 2%;
-    }
-    &:nth-child(9) {
-      margin-right: -1%;
+      margin-right: calc(3rem / 2);
     }
 
     @include phone {
@@ -86,13 +91,13 @@
     }
 
     // IE sucks
-
     @include IE {
-      flex-basis: 27%;
-      // &:nth-child(8),
-      // &:nth-child(9) {
-      //   margin-left: 1%;
-      // }
+      flex-basis: calc(100% / 3 - 5rem);
+    }
+
+    // So does Edge
+    @include Edge {
+      flex-basis: calc(100% / 3 - 1.1rem);
     }
   }
 }

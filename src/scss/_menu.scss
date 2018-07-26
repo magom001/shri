@@ -4,6 +4,10 @@
   display: flex;
   font-size: 1.6rem;
 
+  @include phone {
+    display: none;
+  }
+
   &__item {
     color: inherit;
     margin: 0 1rem;
@@ -19,6 +23,74 @@
     &_active {
       opacity: 1;
       cursor: default;
+    }
+  }
+}
+
+.burger {
+  width: 16px;
+  height: 2px;
+  position: relative;
+  background-color: currentColor;
+  border-radius: 10px;
+  float: right;
+  margin-top: 6px;
+
+  display: none;
+  @include phone {
+    display: inline-block;
+  }
+
+  &::before,
+  &::after {
+    content: " ";
+    width: 16px;
+    height: 2px;
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    background-color: currentColor;
+    border-radius: 10px;
+    transition: transform ease 0.25s;
+  }
+  &::before {
+    transform-origin: 0% 0%;
+  }
+  &::after {
+    top: 5px;
+    transform-origin: 0% 100%;
+  }
+
+  &__menu {
+    position: absolute;
+    display: none;
+    background-color: #333333;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    z-index: 99999999999;
+  }
+}
+
+#burger {
+  position: relative;
+  &:checked ~ :last-child {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &:checked + div {
+    background-color: transparent;
+
+    &::before {
+      transform: rotate(45deg) translate(2px, -3px);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translate(2px, 2px);
     }
   }
 }
