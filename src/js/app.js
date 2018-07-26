@@ -187,3 +187,22 @@ function closeModal() {
   document.body.classList.remove("frozen");
   modalControls.classList.remove("modal__controls_visible");
 }
+
+/**
+ * Main widget right column scroll
+ */
+
+const rightColumn = document.querySelector(".widget-main__column_right");
+const rightColumnFirstChild = rightColumn.firstElementChild;
+const scrollIndicator = document.querySelector(
+  ".widget-main__scroll-indicator"
+);
+rightColumn.addEventListener("scroll", () => {
+  const rcRect = rightColumn.getBoundingClientRect();
+  const rcFcRect = rightColumnFirstChild.getBoundingClientRect();
+  if (rcRect.top + 20 > rcFcRect.top) {
+    scrollIndicator.classList.add("widget-main__scroll-indicator--hidden");
+  } else {
+    scrollIndicator.classList.remove("widget-main__scroll-indicator--hidden");
+  }
+});

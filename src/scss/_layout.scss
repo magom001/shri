@@ -87,8 +87,15 @@
 
   &__item {
     flex-basis: calc(100% / 3 - 1rem);
+    margin-bottom: 1.5rem !important;
     &:not(:nth-child(3n + 3)) {
       margin-right: calc(3rem / 2);
+    }
+
+    &:nth-child(7),
+    &:nth-child(8),
+    &:nth-child(9) {
+      margin-bottom: 0 !important;
     }
 
     @include phone {

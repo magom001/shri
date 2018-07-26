@@ -341,10 +341,15 @@ a:active {
 .page__item {
   -ms-flex-preferred-size: calc(100% / 3 - 1rem);
       flex-basis: calc(100% / 3 - 1rem);
+  margin-bottom: 1.5rem !important;
 }
 
 .page__item:not(:nth-child(3n + 3)) {
   margin-right: calc(3rem / 2);
+}
+
+.page__item:nth-child(7), .page__item:nth-child(8), .page__item:nth-child(9) {
+  margin-bottom: 0 !important;
 }
 
 @media (max-width: 425px) {
@@ -718,6 +723,7 @@ a:active {
     -webkit-box-flex: 1;
         -ms-flex: 1 0 100%;
             flex: 1 0 100%;
+    margin-bottom: 4rem;
   }
 }
 
@@ -818,6 +824,129 @@ a:active {
   margin-right: 1rem;
 }
 
+.widget-main {
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+.widget-main__info-wrapper {
+  width: 100%;
+  min-height: 33rem;
+}
+
+.widget-main__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 33rem;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.25)), to(rgba(255, 255, 255, 0.25))), url(../assets/images/interior_1280.jpg);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), url(../assets/images/interior_1280.jpg);
+  background-size: cover, cover;
+  background-repeat: no-repeat;
+  border-radius: 2rem;
+}
+
+.widget-main__column {
+  display: inline-block;
+}
+
+.widget-main__column_left {
+  -webkit-box-flex: 10;
+      -ms-flex: 10 0 auto;
+          flex: 10 0 auto;
+  padding: 2rem 3rem;
+}
+
+.widget-main__column_right {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  height: 33rem;
+  padding: 2rem 2rem 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  min-height: inherit;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: scroll;
+}
+
+.widget-main__column_right::-webkit-scrollbar {
+  display: none;
+}
+
+.widget-main__scroll-indicator {
+  position: absolute;
+  background-color: #f7f7f7;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 2rem);
+  min-height: 5rem;
+  border-radius: 2rem 2rem 0 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  pointer-events: none;
+  margin-bottom: 0;
+  text-align: -webkit-center;
+  line-height: 5rem;
+  opacity: 1;
+  -webkit-transition: opacity ease 0.25s;
+  transition: opacity ease 0.25s;
+}
+
+.widget-main__scroll-indicator--hidden {
+  opacity: 0;
+}
+
+.widget-main__greeting {
+  display: block;
+  font-size: 2.7rem;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+
+.widget-main__status {
+  display: block;
+  font-family: Arial-MT;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.widget-main__weather {
+  display: inline-block;
+}
+
+.widget-main__weather:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.widget-main__weather-location {
+  display: block;
+  font-family: ArialMT;
+  font-size: 1.4rem;
+  color: #858585;
+}
+
+.widget-main__weather-temperature {
+  font-family: Arial-BoldMT;
+  font-weight: bolder;
+  font-size: 3.6rem;
+  letter-spacing: 0;
+}
+
+.widget-main__weather-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
 .action-box {
   min-width: 20rem;
   min-height: 10rem;
@@ -838,6 +967,10 @@ a:active {
   cursor: pointer;
 }
 
+.action-box--H120 {
+  min-height: 12rem;
+}
+
 @media (max-width: 425px) {
   .action-box {
     max-width: 20rem;
@@ -847,19 +980,6 @@ a:active {
 
 .action-box > * {
   pointer-events: none;
-}
-
-.action-box_scroll {
-  min-height: 4rem;
-  border-radius: 2rem 2rem 0 0;
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin-bottom: 0;
-  text-align: center;
-  line-height: 4rem;
 }
 
 .action-box:hover {
@@ -910,7 +1030,7 @@ a:active {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
