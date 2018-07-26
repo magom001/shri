@@ -7,10 +7,10 @@
 }
 
 @mixin thumb($width, $height) {
-  width: $width + 4px;
-  height: $height + 4px;
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
-  margin-top: -2px;
+  // margin-top: -2px;
   border: 4px solid white;
   box-shadow: 0px 0px 0 4px rgba(#333333, 0.1) inset;
 }
@@ -30,7 +30,7 @@
   }
   &::before {
     left: 0px;
-    top: $width - 60px;
+    top: calc($width - 60px);
     line-height: 60px;
     z-index: 1;
   }
@@ -49,10 +49,16 @@
   }
 }
 
+.test {
+  width: 300px;
+  height: 300px;
+  background-color: grey;
+}
+
 /* *
  * IE */
 .range-slider {
-  $width: 584px;
+  $width: 100%;
   $height: 60px;
   $gradient: linear-gradient(to left, #ff9e00, #ffe682 100%);
   $gradient_rainbow: linear-gradient(
@@ -64,9 +70,10 @@
   display: inline-block;
   position: relative;
   height: $height;
+  width: 300px;
   input[type="range"] {
     -webkit-appearance: none;
-    width: 584px;
+    width: inherit;
     user-select: none;
     margin: 0;
     padding: 0;
@@ -154,23 +161,34 @@
     &::after {
       content: "";
       background-image: url(../assets/images/icon_sun_3.svg);
-      background-size: cover;
+      background-size: 36px 36px;
+      background-repeat: no-repeat;
       width: 36px;
       height: 36px;
       top: 12px;
     }
     &::before {
       background-image: url(../assets/images/icon_sun_4.svg);
-      left: 16px;
+      left: 12px;
     }
     &::after {
-      right: 16px;
+      right: 12px;
     }
   }
   &_vertical {
-    @include vertical($width, $height);
+    // @include vertical($width, $height);
+    transform: rotate(-90deg);
+    &::before,
+    &::after {
+      transform: rotate(90deg);
+    }
   }
   @include phone {
-    @include vertical($width, $height);
+    // @include vertical($width, $height);
+    transform: rotate(-90deg);
+    &::before,
+    &::after {
+      transform: rotate(90deg);
+    }
   }
 }

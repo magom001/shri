@@ -95,6 +95,7 @@ function openModal(eventSource) {
   function restorePosition() {
     modalWrapper.removeEventListener("transitionend", restorePosition);
     modalWrapper.style.cssText = "";
+    document.body.classList.add("frozen");
     modalWrapper.classList.remove("ready");
     modalControls.classList.add("modal__controls_visible");
   }
@@ -103,5 +104,6 @@ function openModal(eventSource) {
 function closeModal() {
   globalWrapper.classList.remove("blurred");
   modal.classList.remove("modal_visible");
+  document.body.classList.remove("frozen");
   modalControls.classList.remove("modal__controls_visible");
 }

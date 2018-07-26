@@ -1,5 +1,10 @@
 @import "./mixins";
 
+.frozen {
+  overflow: hidden;
+  height: 100%;
+}
+
 #page-wrapper {
   min-width: 133rem;
   height: 100vh;
