@@ -215,6 +215,14 @@ a:active {
 #page-wrapper {
   min-width: 133rem;
   margin: 0 auto;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+  transition: 0.3s -webkit-filter linear;
+}
+
+#page-wrapper.blurred {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
 }
 
 @media (max-width: 425px) {
@@ -813,7 +821,7 @@ a:active {
   top: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(51, 51, 51, 0.5);
+  background-color: rgba(51, 51, 51, 0);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -829,9 +837,12 @@ a:active {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-transition: background-color ease 0.3s;
+  transition: background-color ease 0.3s;
 }
 
 .modal_visible {
+  background-color: rgba(51, 51, 51, 0.5);
   visibility: visible;
 }
 

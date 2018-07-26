@@ -20,6 +20,7 @@ const rightBtn = document
 const target = document.getElementById("scenarios-pages");
 new Scroll(leftBtn, rightBtn, target);
 
+const globalWrapper = document.getElementById("page-wrapper");
 const modal = document.querySelector(".modal");
 const modalControls = document.querySelector(".modal__controls");
 const closeModalButton = document.getElementById("closeModal");
@@ -79,6 +80,7 @@ function openModal(eventSource) {
   }
 
   function restore() {
+    globalWrapper.classList.add("blurred");
     modalWrapper.addEventListener("transitionend", restorePosition);
     modalWrapper.style.top = `${y}px`;
     modalWrapper.style.left = `${x}px`;
@@ -95,6 +97,7 @@ function openModal(eventSource) {
 }
 
 function closeModal() {
+  globalWrapper.classList.remove("blurred");
   modal.classList.remove("modal_visible");
   modalControls.classList.remove("modal__controls_visible");
 }
