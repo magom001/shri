@@ -24,6 +24,10 @@
     cursor: default;
     user-select: none;
 
+    @include phone {
+      display: none;
+    }
+
     &_left,
     &_right {
       width: 1.3rem;
@@ -47,7 +51,7 @@
 .widget-scenarios {
   &__content {
     overflow-x: hidden;
-    min-height: 43rem;
+    min-height: 33rem;
 
     @include phone {
       overflow-x: auto;

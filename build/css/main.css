@@ -301,9 +301,6 @@ a:active {
 
 .page__content:after {
   content: "";
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
 }
 
 @media (max-width: 425px) {
@@ -314,17 +311,28 @@ a:active {
 }
 
 .page__item {
-  -ms-flex-preferred-size: 32%;
-      flex-basis: 32%;
+  -ms-flex-preferred-size: 31%;
+      flex-basis: 31%;
 }
 
 .page__item:not(:nth-child(3n + 3)) {
   margin-right: 2%;
 }
 
+.page__item:nth-child(9) {
+  margin-right: -1%;
+}
+
 @media (max-width: 425px) {
   .page__item {
     margin-right: 1rem !important;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .page__item {
+    -ms-flex-preferred-size: 27%;
+        flex-basis: 27%;
   }
 }
 
@@ -664,6 +672,12 @@ a:active {
           user-select: none;
 }
 
+@media (max-width: 425px) {
+  .widget__scroll {
+    display: none;
+  }
+}
+
 .widget__scroll_left, .widget__scroll_right {
   width: 1.3rem;
   height: 0.8rem;
@@ -688,7 +702,7 @@ a:active {
 
 .widget-scenarios__content {
   overflow-x: hidden;
-  min-height: 43rem;
+  min-height: 33rem;
 }
 
 @media (max-width: 425px) {
@@ -787,6 +801,12 @@ a:active {
   margin-top: 0.5rem;
 }
 
+.ready {
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  visibility: visible !important;
+}
+
 .modal {
   position: absolute;
   left: 0;
@@ -805,6 +825,14 @@ a:active {
           align-items: center;
   z-index: 99999999999;
   visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.modal_visible {
+  visibility: visible;
 }
 
 @media (max-width: 425px) {
@@ -845,6 +873,8 @@ a:active {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
 }
 
 @media (max-width: 425px) {
@@ -915,6 +945,13 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  opacity: 0;
+  -webkit-transition: opacity ease 0.15s;
+  transition: opacity ease 0.15s;
+}
+
+.modal__controls_visible {
+  opacity: 1;
 }
 
 @media (max-width: 425px) {

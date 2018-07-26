@@ -19,3 +19,15 @@ $desktop-width: 1024px;
     @content;
   }
 }
+
+@mixin IE {
+  @media all and (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin Edge {
+  @supports (-ms-accelerator: true) {
+    @content;
+  }
+}

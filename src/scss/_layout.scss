@@ -58,7 +58,7 @@
 
     &:after {
       content: "";
-      flex: auto;
+      // flex: auto;
     }
 
     @include phone {
@@ -67,13 +67,26 @@
   }
 
   &__item {
-    flex-basis: 32%;
+    flex-basis: 31%;
     &:not(:nth-child(3n + 3)) {
       margin-right: 2%;
+    }
+    &:nth-child(9) {
+      margin-right: -1%;
     }
 
     @include phone {
       margin-right: 1rem !important;
+    }
+
+    // IE sucks
+
+    @include IE {
+      flex-basis: 27%;
+      // &:nth-child(8),
+      // &:nth-child(9) {
+      //   margin-left: 1%;
+      // }
     }
   }
 }
