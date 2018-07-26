@@ -21,5 +21,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-symbols": "^3.2.0",
     "webpack-stream": "^5.0.0"
+  },
+  "dependencies": {
+    "is-mobile": "^1.0.0"
   }
 }

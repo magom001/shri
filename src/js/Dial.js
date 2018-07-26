@@ -10,11 +10,7 @@ export class Dial {
   }
 
   init() {
-    this.min = parseInt(this.dial.getAttribute("min"), 10);
-    this.max = parseInt(this.dial.getAttribute("max"), 10);
-    this.initValue = this.dial.getAttribute("value");
-
-    this.k = (this.max - this.min) / 300;
+    this.calculateMapping();
 
     this.dial.style.display = "none";
 
@@ -111,13 +107,38 @@ export class Dial {
       }
     });
 
+    this.positionAll();
+
+    window.addEventListener("resize", this.getCenterCoords.bind(this));
+    window.addEventListener("scroll", this.getCenterCoords.bind(this));
+  }
+
+  calculateMapping() {
+    this.min = parseInt(this.dial.getAttribute("min"), 10);
+    this.max = parseInt(this.dial.getAttribute("max"), 10);
+    this.initValue = this.dial.getAttribute("value");
+
+    this.k = (this.max - this.min) / 300;
+  }
+
+  positionAll() {
     this.setText((this.initValue - this.min) / this.k);
     this.rotateMeter((this.initValue - this.min) / this.k);
     this.setIndicator((this.initValue - this.min) / this.k);
     this.rotateSector((this.initValue - this.min) / this.k);
+  }
 
-    window.addEventListener("resize", this.getCenterCoords.bind(this));
-    window.addEventListener("scroll", this.getCenterCoords.bind(this));
+  repaintDial() {
+    this.calculateMapping();
+    this.positionAll();
+  }
+
+  hideDial() {
+    this.svg.style.display = "none";
+  }
+
+  unhideDial() {
+    this.svg.style.display = "block";
   }
 
   update(e) {

@@ -706,14 +706,14 @@
                     <h1 class="widget__title">Избранные устройства</h1>
                 </header>
                 <section class="widget__content widget-appliances__content">
-                    <div class="action-box widget-appliances__appliance">
+                    <div data-type="range" class="action-box widget-appliances__appliance">
                         <i class="action-box__icon icon icon_sun"></i>
                         <div class="action-box__action">
                             <span class="action-box__device">Xiaomi Yeelight LED Smart Bulb</span>
                             <span class="action-box__subscript">Включится в 17:00</span>
                         </div>
                     </div>
-                    <div class="action-box widget-appliances__appliance">
+                    <div data-type="radial" data-min="-5" data-max="35" data-value="1" class="action-box widget-appliances__appliance">
                         <i class="action-box__icon icon icon_sun"></i>
                         <div class="action-box__action">
                             <span class="action-box__device">Xiaomi Yeelight LED Smart Bulb</span>
@@ -826,17 +826,21 @@
                         <i class="icon icon_temperature modal__indication-icon"></i>
                     </div>
                 </div>
+                <div class="modal__command-bar">
+                    <button class="modal__command-bar-button btn btn_primary btn_flex">Вручную</button>
+                    <button class="modal__command-bar-button btn btn_flex">Дневной свет</button>
+                    <button class="modal__command-bar-button btn btn_flex">Вечерный свет</button>
+                    <button class="modal__command-bar-button btn btn_flex">Рассвет</button>
+                </div>
                 <div class="modal__content">
-                    <!-- <span class="input-range input-range_rainbow" data-range-min="-18" data-range-max="+30">
-                    <input type="range" min="18" max="30" />
-                </span> -->
+
                     <!-- <input data-size="221" type="range" class="dial" value="0" min="-30" max="30" /> -->
 
-                    <div class="test">
-                        <span class="range-slider range-slider_rainbow" data-range-min="-18" data-range-max="+30">
-                            <input type="range" min="18" max="30" />
-                        </span>
-                    </div>
+
+                    <!-- <span class="range-slider range-slider_rainbow" data-range-min="-18" data-range-max="+30">
+                        <input type="range" min="18" max="30" />
+                    </span> -->
+
                 </div>
             </div>
             <div class="modal__controls">

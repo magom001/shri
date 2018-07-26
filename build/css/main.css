@@ -500,7 +500,7 @@ a:active {
   display: inline-block;
   position: relative;
   height: 60px;
-  width: 300px;
+  width: 58rem;
 }
 
 .range-slider input[type="range"] {
@@ -919,6 +919,7 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -989,6 +990,7 @@ a:active {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -1004,7 +1006,36 @@ a:active {
           justify-content: space-between;
 }
 
+.modal__command-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  padding: 2rem 0;
+}
+
+@media (max-width: 425px) {
+  .modal__command-bar {
+    width: calc(100vw - 7.2rem);
+  }
+}
+
+.modal__command-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.modal__command-bar-button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.modal__command-bar-button:not(:last-child) {
+  margin-right: 1rem;
+}
+
 .modal__content {
+  min-height: 6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1014,6 +1045,16 @@ a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  overflow: hidden;
+}
+
+@media (max-width: 425px) {
+  .modal__content {
+    width: calc(100vw - 7.2rem);
+  }
 }
 
 .modal__name {
@@ -1021,6 +1062,12 @@ a:active {
   font-size: 2.7rem;
   color: #333333;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 425px) {
+  .modal__name {
+    font-size: 1.8rem;
+  }
 }
 
 .modal__status {
@@ -1100,7 +1147,7 @@ a:active {
 @media (max-width: 425px) {
   .modal__controls-button:first-child {
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 

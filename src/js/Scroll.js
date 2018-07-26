@@ -5,7 +5,7 @@ export class Scroll {
     this.scrollTarget = scrollTarget;
     this.currentPage = 0;
     this.numPages = scrollTarget.childElementCount;
-    console.log(this.leftBtn);
+
     this.init();
   }
 
