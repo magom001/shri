@@ -52,7 +52,11 @@ function openModal(eventSource) {
   const modalWrapper = document.querySelector(".modal__wrapper");
 
   // Get the modal's init values;
-  const { x, y, width, height } = modalWrapper.getBoundingClientRect();
+  let { x, y, left, top, width, height } = modalWrapper.getBoundingClientRect();
+
+  // IE and Edge fix
+  x = x || left;
+  y = y || top;
 
   // Change modal's position to absolute and resize to initial values
   modalWrapper.style.position = "absolute";
@@ -62,8 +66,8 @@ function openModal(eventSource) {
   requestAnimationFrame(reposition);
 
   function reposition() {
-    modalWrapper.style.top = `${sourceValues.y}px`;
-    modalWrapper.style.left = `${sourceValues.x}px`;
+    modalWrapper.style.top = `${sourceValues.y || sourceValues.top}px`;
+    modalWrapper.style.left = `${sourceValues.x || sourceValues.left}px`;
 
     // Scale to the source proportions
     modalWrapper.style.transform = `scaleX(${sourceValues.width /
@@ -90,7 +94,7 @@ function openModal(eventSource) {
   }
   function restorePosition() {
     modalWrapper.removeEventListener("transitionend", restorePosition);
-    modalWrapper.style = "";
+    modalWrapper.style.cssText = "";
     modalWrapper.classList.remove("ready");
     modalControls.classList.add("modal__controls_visible");
   }
