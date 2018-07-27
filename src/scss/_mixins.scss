@@ -31,3 +31,9 @@ $desktop-width: 1024px;
     @content;
   }
 }
+
+@mixin Firefox {
+  @supports (-moz-appearance: meterbar) {
+    @content;
+  }
+}

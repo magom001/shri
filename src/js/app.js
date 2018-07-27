@@ -171,6 +171,7 @@ function openModal(eventSource) {
   }
   function restorePosition() {
     modalWrapper.removeEventListener("transitionend", restorePosition);
+    radialDialInstance.getCenterCoords();
     modalWrapper.style.cssText = "";
     document.body.classList.add("frozen");
     modalWrapper.classList.remove("ready");
@@ -200,7 +201,8 @@ const scrollIndicator = document.querySelector(
 rightColumn.addEventListener("scroll", () => {
   const rcRect = rightColumn.getBoundingClientRect();
   const rcFcRect = rightColumnFirstChild.getBoundingClientRect();
-  if (rcRect.top + 20 > rcFcRect.top) {
+
+  if (Math.floor(rcRect.top + 20) > Math.ceil(rcFcRect.top)) {
     scrollIndicator.classList.add("widget-main__scroll-indicator--hidden");
   } else {
     scrollIndicator.classList.remove("widget-main__scroll-indicator--hidden");

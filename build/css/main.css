@@ -224,15 +224,18 @@ a:active {
   -webkit-filter: blur(0px);
           filter: blur(0px);
   transition: 0.3s -webkit-filter linear;
-}
-
-#page-wrapper.blurred {
-  -webkit-filter: blur(2px);
-          filter: blur(2px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
 }
 
 @media (max-width: 425px) {
   #page-wrapper {
+    display: block;
     min-width: 0rem;
     width: 100vw;
     height: unset;
@@ -242,7 +245,15 @@ a:active {
   }
 }
 
+#page-wrapper.blurred {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+
 .header {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   padding: 3rem 4rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -262,6 +273,7 @@ a:active {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    border-bottom: none;
   }
 }
 
@@ -270,6 +282,9 @@ a:active {
 }
 
 .content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -493,14 +508,6 @@ a:active {
           transform: rotate(-45deg) translate(2px, 2px);
 }
 
-.test {
-  width: 300px;
-  height: 300px;
-  background-color: grey;
-}
-
-/* *
- * IE */
 .range-slider {
   display: inline-block;
   position: relative;
@@ -517,6 +524,13 @@ a:active {
           user-select: none;
   margin: 0;
   padding: 0;
+}
+
+@supports (-moz-appearance: meterbar) {
+  .range-slider input[type="range"] {
+    -webkit-transform: translateY(125%);
+            transform: translateY(125%);
+  }
 }
 
 .range-slider input[type="range"]:focus {
@@ -540,6 +554,7 @@ a:active {
   width: 60px;
   height: 60px;
   border-radius: 100%;
+  background-color: transparent;
   border: 4px solid white;
   -webkit-box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
           box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
@@ -549,6 +564,7 @@ a:active {
   width: 60px;
   height: 60px;
   border-radius: 100%;
+  background-color: transparent;
   border: 4px solid white;
   box-shadow: 0px 0px 0 4px rgba(51, 51, 51, 0.1) inset;
 }
@@ -609,6 +625,7 @@ a:active {
 .range-slider::before {
   left: 20px;
   content: attr(data-range-min);
+  z-index: 1;
 }
 
 .range-slider::after {
@@ -716,6 +733,14 @@ a:active {
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
   width: 50%;
+}
+
+@supports (-moz-appearance: meterbar) {
+  .widget {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 45%;
+            flex: 0 0 45%;
+  }
 }
 
 @media (max-width: 425px) {
@@ -829,9 +854,28 @@ a:active {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 425px) {
+  .widget-main {
+    margin-right: 0rem;
+    width: calc(100vw - 6rem);
+  }
+}
+
+@media (max-width: 425px) {
+  .widget-main__container {
+    margin-top: -3rem;
+  }
+}
+
 .widget-main__info-wrapper {
   width: 100%;
   min-height: 33rem;
+}
+
+@media (max-width: 425px) {
+  .widget-main__header {
+    display: none;
+  }
 }
 
 .widget-main__info {
@@ -844,6 +888,15 @@ a:active {
   background-size: cover, cover;
   background-repeat: no-repeat;
   border-radius: 2rem;
+}
+
+@media (max-width: 425px) {
+  .widget-main__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+  }
 }
 
 .widget-main__column {
@@ -876,10 +929,41 @@ a:active {
       -ms-flex-pack: justify;
           justify-content: space-between;
   overflow: scroll;
+  -ms-overflow-style: none;
 }
 
 .widget-main__column_right::-webkit-scrollbar {
   display: none;
+}
+
+@supports (-moz-appearance: meterbar) {
+  .widget-main__column_right {
+    overflow: -moz-scrollbars-none;
+  }
+}
+
+@media (max-width: 425px) {
+  .widget-main__column_right {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    height: 12rem;
+    min-height: 12rem;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .widget-main__action-box {
+    margin-bottom: 0;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .widget-main__action-box:first-child {
+    margin-left: 2rem;
+  }
 }
 
 .widget-main__scroll-indicator {
@@ -896,6 +980,7 @@ a:active {
   pointer-events: none;
   margin-bottom: 0;
   text-align: -webkit-center;
+  text-align: center;
   line-height: 5rem;
   opacity: 1;
   -webkit-transition: opacity ease 0.25s;
@@ -906,6 +991,12 @@ a:active {
   opacity: 0;
 }
 
+@media (max-width: 425px) {
+  .widget-main__scroll-indicator {
+    display: none;
+  }
+}
+
 .widget-main__greeting {
   display: block;
   font-size: 2.7rem;
@@ -913,11 +1004,23 @@ a:active {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 425px) {
+  .widget-main__greeting {
+    font-size: 1.8rem;
+  }
+}
+
 .widget-main__status {
   display: block;
   font-family: Arial-MT;
   font-size: 1.4rem;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 425px) {
+  .widget-main__status {
+    font-size: 1.2rem;
+  }
 }
 
 .widget-main__weather {
@@ -935,6 +1038,12 @@ a:active {
   color: #858585;
 }
 
+@media (max-width: 425px) {
+  .widget-main__weather-location {
+    font-size: 1.2rem;
+  }
+}
+
 .widget-main__weather-temperature {
   font-family: Arial-BoldMT;
   font-weight: bolder;
@@ -942,9 +1051,22 @@ a:active {
   letter-spacing: 0;
 }
 
+@media (max-width: 425px) {
+  .widget-main__weather-temperature {
+    font-size: 2.4rem;
+  }
+}
+
 .widget-main__weather-icon {
   width: 2.6rem;
   height: 2.6rem;
+}
+
+@media (max-width: 425px) {
+  .widget-main__weather-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
 }
 
 .action-box {
@@ -1130,7 +1252,7 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 2rem 0;
 }
 

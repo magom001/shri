@@ -4,6 +4,10 @@
   flex: 0 0 50%;
   width: 50%;
 
+  @include Firefox {
+    flex: 0 0 45%;
+  }
+
   @include phone {
     flex: 1 0 100%;
     margin-bottom: 4rem;
@@ -90,29 +94,33 @@
 .widget-main {
   margin-right: 1rem;
   margin-bottom: 2rem;
+
+  @include phone {
+    margin-right: 0rem;
+    width: calc(100vw - 6rem);
+  }
+
+  &__container {
+    @include phone {
+      margin-top: -3rem;
+    }
+  }
+
   &__info-wrapper {
     width: 100%;
     min-height: 33rem;
-    // position: relative;
-    // width: 100%;
+  }
 
-    // &::before {
-    //   content: "";
-    //   display: block;
-    //   padding-top: 52%;
-    // }
+  &__header {
+    @include phone {
+      display: none;
+    }
   }
 
   &__info {
     display: flex;
     min-height: 33rem;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // bottom: 0;
-    // right: 0;
-    // background-image: url(../assets/images/interior_1280.jpg),
-    //   linear-gradient(to right, rgba(#000, 0.8) 0%, rgba(#000, 0.8) 100%);
+
     background-image: linear-gradient(
         to right,
         rgba(#fff, 0.25) 0%,
@@ -122,6 +130,10 @@
     background-size: cover, cover;
     background-repeat: no-repeat;
     border-radius: 2rem;
+
+    @include phone {
+      flex-flow: column nowrap;
+    }
   }
 
   &__column {
@@ -145,6 +157,32 @@
       &::-webkit-scrollbar {
         display: none;
       }
+
+      -ms-overflow-style: none;
+
+      @include Firefox {
+        overflow: -moz-scrollbars-none;
+      }
+
+      @include phone {
+        flex-flow: row nowrap;
+        height: 12rem;
+        min-height: 12rem;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__action-box {
+    @include phone {
+      margin-bottom: 0;
+      margin-right: 1rem;
+      margin-left: 1rem;
+
+      &:first-child {
+        margin-left: 2rem;
+      }
     }
   }
 
@@ -160,6 +198,7 @@
     pointer-events: none;
     margin-bottom: 0;
     text-align: -webkit-center;
+    text-align: center;
     line-height: 5rem;
 
     opacity: 1;
@@ -169,6 +208,10 @@
     &--hidden {
       opacity: 0;
     }
+
+    @include phone {
+      display: none;
+    }
   }
 
   &__greeting {
@@ -176,6 +219,10 @@
     font-size: 2.7rem;
     font-weight: bolder;
     margin-bottom: 1rem;
+
+    @include phone {
+      font-size: 1.8rem;
+    }
   }
 
   &__status {
@@ -183,6 +230,10 @@
     font-family: Arial-MT;
     font-size: 1.4rem;
     margin-bottom: 2rem;
+
+    @include phone {
+      font-size: 1.2rem;
+    }
   }
 
   &__weather {
@@ -196,6 +247,10 @@
       font-family: ArialMT;
       font-size: 1.4rem;
       color: #858585;
+
+      @include phone {
+        font-size: 1.2rem;
+      }
     }
 
     &-temperature {
@@ -203,11 +258,18 @@
       font-weight: bolder;
       font-size: 3.6rem;
       letter-spacing: 0;
+      @include phone {
+        font-size: 2.4rem;
+      }
     }
 
     &-icon {
       width: 2.6rem;
       height: 2.6rem;
+      @include phone {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
     }
   }
 }

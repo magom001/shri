@@ -131,6 +131,7 @@ export class Dial {
   repaintDial() {
     this.calculateMapping();
     this.positionAll();
+    this.prevAngle = this.angle;
   }
 
   hideDial() {

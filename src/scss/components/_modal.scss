@@ -73,7 +73,7 @@
 
   &__command-bar {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     @include phone {
       width: calc(100vw - 7.2rem);
     }

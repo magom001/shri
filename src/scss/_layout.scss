@@ -12,21 +12,27 @@
   filter: blur(0px);
   transition: 0.3s -webkit-filter linear;
 
-  &.blurred {
-    filter: blur(2px);
-  }
+  display: flex;
+  flex-flow: column nowrap;
 
   @include phone {
+    display: block;
     min-width: 0rem;
     width: 100vw;
     height: unset;
     margin: 0;
     overflow-x: hidden;
     min-height: 100vh;
+    // padding: 0rem 3rem;
+  }
+
+  &.blurred {
+    filter: blur(2px);
   }
 }
 
 .header {
+  flex-grow: 0;
   padding: 3rem 4rem;
   display: flex;
   align-items: center;
@@ -36,6 +42,7 @@
   @include phone {
     padding: 2rem 3rem;
     justify-content: space-between;
+    border-bottom: none;
   }
 
   &__logo {
@@ -44,6 +51,8 @@
 }
 
 .content {
+  flex-grow: 1;
+
   display: flex;
   flex-flow: row wrap;
   padding: 3rem 3rem;
