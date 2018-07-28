@@ -125,7 +125,7 @@ function openModal(eventSource) {
     status = ""
   } = eventSource.dataset;
   let deviceType = eventSource
-    .querySelector("[device-type")
+    .querySelector("[device-type]")
     .getAttribute("device-type");
 
   if (!deviceType) deviceType = "temperature";
