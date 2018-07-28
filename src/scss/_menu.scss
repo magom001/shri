@@ -48,7 +48,7 @@
     height: 0.2rem;
     position: absolute;
     top: -0.5rem;
-    left: 0px;
+    left: 0;
     background-color: currentColor;
     border-radius: 1rem;
     transition: transform ease 0.25s;
@@ -57,7 +57,7 @@
     transform-origin: 0% 0%;
   }
   &::after {
-    top: 5px;
+    top: 0.5rem;
     transform-origin: 0% 100%;
   }
 
@@ -145,12 +145,12 @@
 
     &::before {
       background-color: white;
-      transform: rotate(45deg) translate(2px, -3px);
+      transform: rotate(45deg) translate(0.2rem, -0.3rem);
     }
 
     &::after {
       background-color: white;
-      transform: rotate(-45deg) translate(2px, 2px);
+      transform: rotate(-45deg) translate(0.2rem, 0.2rem);
     }
   }
 }
