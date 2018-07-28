@@ -146,7 +146,8 @@
     right: 0px;
     content: attr(data-range-max);
   }
-  &_rainbow > input[type="range"] {
+  &_rainbow > input[type="range"],
+  &[device-type="cooling"] > input[type="range"] {
     &::-webkit-slider-runnable-track {
       background-image: $gradient_rainbow;
     }
@@ -157,7 +158,8 @@
       background-image: $gradient_rainbow;
     }
   }
-  &_sun {
+  &_sun,
+  &[device-type="brightness"] {
     &::before,
     &::after {
       content: "";

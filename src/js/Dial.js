@@ -219,7 +219,12 @@ export class Dial {
 
   setText(angle) {
     const value = Math.round(this.mapToScale(angle));
-    this.dial.setAttribute("value", value);
+    this.dial.value = value;
+
+    const event = new Event("input");
+
+    this.dial.dispatchEvent(event);
+
     const displayValue = value > 0 ? `+${value}` : value;
     this.display.childNodes[0].textContent = displayValue;
   }

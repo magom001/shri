@@ -84,6 +84,7 @@
   }
 
   &__appliance {
+    max-width: 20rem;
     flex: 0 0 auto;
     &:not(:last-child) {
       margin-right: 1rem;
@@ -146,7 +147,7 @@
 
     &_right {
       position: relative;
-      flex: 1 0 auto;
+      flex: 1 1 auto;
       height: 33rem;
       padding: 2rem 2rem 0 0;
       display: flex;

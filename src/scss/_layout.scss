@@ -2,8 +2,9 @@
 @import "./vars";
 
 .frozen {
-  overflow: hidden;
-  height: 100%;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
 }
 
 #page-wrapper {
@@ -32,7 +33,7 @@
 
 .header {
   flex-grow: 0;
-  padding: 3rem 4rem;
+  padding: 2rem 3rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -81,6 +82,7 @@
   height: 6.4rem;
   width: 100%;
   background-color: white;
+  padding: 0 $contentPadding;
 
   display: flex;
   justify-content: space-between;
@@ -94,6 +96,7 @@
     align-items: start;
     justify-content: space-around;
     height: auto;
+    padding: 0;
   }
 
   &__menu {

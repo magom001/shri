@@ -12,7 +12,14 @@ const INPUT_TYPES = {
   RADIAL_SLIDER: "radial"
 };
 
+const content = document.querySelector(".content");
+
 const modalContent = document.querySelector(".modal__content");
+const modalWrapper = document.querySelector(".modal__wrapper");
+const modalDeviceType = modalWrapper.querySelector("[device-type]");
+const modalDeviceName = modalWrapper.querySelector("[device-name]");
+const modalDeviceStatus = modalWrapper.querySelector("[device-status]");
+const modalDeviceIndication = modalWrapper.querySelector("[device-indication]");
 const modalContentInfo = modalContent.getBoundingClientRect();
 // <span class="input-range input-range_rainbow" data-range-min="-18" data-range-max="+30">
 const sliderContainer = document.createElement("span");
@@ -20,7 +27,6 @@ sliderContainer.setAttribute("data-range-min", "-18");
 sliderContainer.setAttribute("data-range-max", "+30");
 
 sliderContainer.classList.add("range-slider");
-sliderContainer.classList.add("range-slider_rainbow");
 if (IS_MOBILE) {
   sliderContainer.style.width = `${modalContentInfo.height}px`;
 }
@@ -30,14 +36,17 @@ const slider = document.createElement("input");
 slider.setAttribute("type", "range");
 slider.setAttribute("min", "-18");
 slider.setAttribute("max", "30");
-slider.setAttribute("value", "23");
+slider.addEventListener("input", event => {
+  modalDeviceIndication.textContent =
+    event.target.value > 0 ? `+${event.target.value}` : event.target.value;
+});
 
 // add slider to modal content
 sliderContainer.appendChild(slider);
 modalContent.appendChild(sliderContainer);
 sliderContainer.style.display = "none";
 
-// create a range slider
+// create a radial dial input
 // <input data-size="221" type="range" class="dial" value="0" min="-30" max="30" />
 const radialDial = document.createElement("input");
 radialDial.setAttribute("type", "range");
@@ -54,6 +63,12 @@ radialDial.setAttribute("min", "-10");
 radialDial.setAttribute("max", "30");
 
 modalContent.appendChild(radialDial);
+
+radialDial.addEventListener("input", event => {
+  modalDeviceIndication.textContent =
+    event.target.value > 0 ? `+${event.target.value}` : event.target.value;
+});
+
 const radialDialInstance = new Dial(radialDial);
 radialDialInstance.hideDial();
 
@@ -96,21 +111,39 @@ document.addEventListener(
  */
 
 function openModal(eventSource) {
+  // Get event sources dimensions
+  const sourceValues = eventSource.getBoundingClientRect();
+
   // determine type of input for the appliance
   const {
     type = INPUT_TYPES.RANGE_SLIDER,
     min = "-7",
     max = "29",
-    value = "17"
+    value = "+17",
+    active = "",
+    device,
+    status = ""
   } = eventSource.dataset;
+  let deviceType = eventSource
+    .querySelector("[device-type")
+    .getAttribute("device-type");
+
+  if (!deviceType) deviceType = "temperature";
+
+  modalDeviceType.setAttribute("device-type", deviceType);
+  modalDeviceType.setAttribute("device-active", active);
+  modalDeviceName.textContent = device;
+  modalDeviceStatus.textContent = status;
+  modalDeviceIndication.textContent = value;
 
   switch (type) {
     case INPUT_TYPES.RANGE_SLIDER:
       sliderContainer.setAttribute("data-range-min", `${min}`);
       sliderContainer.setAttribute("data-range-max", `+${max}`);
-      slider.value = value;
+      slider.value = parseInt(value, 10);
       slider.setAttribute("min", min);
       slider.setAttribute("max", max);
+      sliderContainer.setAttribute("device-type", deviceType);
       sliderContainer.style.display = "block";
       break;
     case INPUT_TYPES.RADIAL_SLIDER:
@@ -123,10 +156,6 @@ function openModal(eventSource) {
     default:
       break;
   }
-
-  // Get event sources dimensions
-  const sourceValues = eventSource.getBoundingClientRect();
-  const modalWrapper = document.querySelector(".modal__wrapper");
 
   // Get the modal's init values;
   let { x, y, left, top, width, height } = modalWrapper.getBoundingClientRect();
@@ -173,7 +202,7 @@ function openModal(eventSource) {
     modalWrapper.removeEventListener("transitionend", restorePosition);
     radialDialInstance.getCenterCoords();
     modalWrapper.style.cssText = "";
-    document.body.classList.add("frozen");
+    content.classList.add("frozen");
     modalWrapper.classList.remove("ready");
     modalControls.classList.add("modal__controls_visible");
   }
@@ -185,7 +214,7 @@ function closeModal() {
 
   globalWrapper.classList.remove("blurred");
   modal.classList.remove("modal_visible");
-  document.body.classList.remove("frozen");
+  content.classList.remove("frozen");
   modalControls.classList.remove("modal__controls_visible");
 }
 

@@ -9,11 +9,20 @@
     background-image: url(../assets/images/dbl-arrow.svg);
   }
 
-  &_temperature {
+  &_temperature,
+  &[device-type="temperature"],
+  &[device-type="cooling"] {
     background-image: url(../assets/images/icon_temperature.svg);
   }
 
-  &_sun {
+  &_temperature--active,
+  &[device-type="temperature"][device-active="active"],
+  &[device-type="cooling"][device-active="active"] {
+    background-image: url(../assets/images/icon_temperature_2.svg);
+  }
+
+  &_sun,
+  &[device-type="brightness"] {
     background-image: url(../assets/images/icon_sun.svg);
   }
 

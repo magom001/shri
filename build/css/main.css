@@ -188,11 +188,15 @@ a:active {
   background-image: url(../assets/images/dbl-arrow.svg);
 }
 
-.icon_temperature {
+.icon_temperature, .icon[device-type="temperature"], .icon[device-type="cooling"] {
   background-image: url(../assets/images/icon_temperature.svg);
 }
 
-.icon_sun {
+.icon_temperature--active, .icon[device-type="temperature"][device-active="active"], .icon[device-type="cooling"][device-active="active"] {
+  background-image: url(../assets/images/icon_temperature_2.svg);
+}
+
+.icon_sun, .icon[device-type="brightness"] {
   background-image: url(../assets/images/icon_sun.svg);
 }
 
@@ -214,8 +218,9 @@ a:active {
 }
 
 .frozen {
-  overflow: hidden;
-  height: 100%;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
 }
 
 #page-wrapper {
@@ -254,7 +259,7 @@ a:active {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  padding: 3rem 4rem;
+  padding: 2rem 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -321,6 +326,7 @@ a:active {
   height: 6.4rem;
   width: 100%;
   background-color: white;
+  padding: 0 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -347,6 +353,7 @@ a:active {
     -ms-flex-pack: distribute;
         justify-content: space-around;
     height: auto;
+    padding: 0;
   }
 }
 
@@ -808,20 +815,23 @@ a:active {
   content: attr(data-range-max);
 }
 
-.range-slider_rainbow > input[type="range"]::-webkit-slider-runnable-track {
+.range-slider_rainbow > input[type="range"]::-webkit-slider-runnable-track,
+.range-slider[device-type="cooling"] > input[type="range"]::-webkit-slider-runnable-track {
   background-image: -webkit-gradient(linear, left top, right top, from(#068fff), color-stop(50%, #ffd800), to(#f76b1c));
   background-image: linear-gradient(90deg, #068fff 0%, #ffd800 50%, #f76b1c 100%);
 }
 
-.range-slider_rainbow > input[type="range"]::-moz-range-track {
+.range-slider_rainbow > input[type="range"]::-moz-range-track,
+.range-slider[device-type="cooling"] > input[type="range"]::-moz-range-track {
   background-image: linear-gradient(90deg, #068fff 0%, #ffd800 50%, #f76b1c 100%);
 }
 
-.range-slider_rainbow > input[type="range"]::-ms-track {
+.range-slider_rainbow > input[type="range"]::-ms-track,
+.range-slider[device-type="cooling"] > input[type="range"]::-ms-track {
   background-image: linear-gradient(90deg, #068fff 0%, #ffd800 50%, #f76b1c 100%);
 }
 
-.range-slider_sun::before, .range-slider_sun::after {
+.range-slider_sun::before, .range-slider_sun::after, .range-slider[device-type="brightness"]::before, .range-slider[device-type="brightness"]::after {
   content: "";
   background-image: url(../assets/images/icon_sun_3.svg);
   background-size: 36px 36px;
@@ -831,12 +841,12 @@ a:active {
   top: 12px;
 }
 
-.range-slider_sun::before {
+.range-slider_sun::before, .range-slider[device-type="brightness"]::before {
   background-image: url(../assets/images/icon_sun_4.svg);
   left: 12px;
 }
 
-.range-slider_sun::after {
+.range-slider_sun::after, .range-slider[device-type="brightness"]::after {
   right: 12px;
 }
 
@@ -1015,6 +1025,7 @@ a:active {
 }
 
 .widget-appliances__appliance {
+  max-width: 20rem;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -1088,8 +1099,8 @@ a:active {
 .widget-main__column_right {
   position: relative;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
   height: 33rem;
   padding: 2rem 2rem 0 0;
   display: -webkit-box;
@@ -1308,6 +1319,7 @@ a:active {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding: 0.1rem 0rem;
 }
 
 .action-box__subscript {
@@ -1517,6 +1529,7 @@ a:active {
   width: 3.8rem;
   height: 4rem;
   vertical-align: sub;
+  margin: 0 0.5rem;
 }
 
 .modal__controls {
