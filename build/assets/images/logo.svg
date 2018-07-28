@@ -1,8 +1,9 @@
-<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="10.629" width="77.066" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 77.066376 10.628906">
- <title>Яндекс Дом</title>
- <desc>Created with Sketch.</desc>
- <text font-weight="300" y="-47.251953" x="-41.007812" font-family="YandexSansLogotype-Light, &apos;Yandex Sans Logotype&apos;">
-  <tspan y="8.7480469" x="-1.0078125" fill="#ff0000">Я</tspan>
-  <tspan y="8.7480469" x="12.074188" fill="#333333">ндекс Дом</tspan>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.423827 14.628906">
+ <text font-family="YandexSansLogotype-Light, &apos;Yandex Sans Logotype&apos;" 
+ y="-1.9999275" font-weight="300" line-height="125%">
+  <tspan font-family="YandexSansLogotype-Light, &apos;Yandex Sans Logotype&apos;" 
+  y="10.7480469" x="-0.796875" font-weight="normal" line-height="125%" fill="#ff0000">Я
+   <tspan fill="#333333">ндекс Дом</tspan>
+  </tspan>
  </text>
 </svg>

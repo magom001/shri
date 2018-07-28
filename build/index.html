@@ -482,18 +482,26 @@
     </svg>
     <section id="page-wrapper">
         <header class="header">
-            <picture class="header__logo">
-                <source media="(min-width: 256rem)" srcset="assets/images/logo@2x.png">
-                <source srcset="assets/images/logo@1x.png 1x, assets/images/logo@2x.png 2x">
-                <img src="assets/images/logo@1x.png" alt="Yandex Home Logo">
-            </picture>
+            <img class="header__logo" src="./assets/images/logo@1x.png">
+
             <label for="burger" style="width:16px">
                 <input id="burger" type="checkbox" style="display:none" />
                 <div class="burger"></div>
                 <div class="burger__menu">
-                    <label for="burger">Close</label>
+                    <ul class="burger__menu-list">
+                        <li class="burger__menu-list-item burger__menu-list-item_active">
+                            <a href="#">Сводка</a>
+                        </li>
+                        <li class="burger__menu-list-item">
+                            <a href="#">Устройства</a>
+                        </li>
+                        <li class="burger__menu-list-item">
+                            <a href="#">Сценарии</a>
+                        </li>
+                    </ul>
                 </div>
             </label>
+
             <ul class="menu">
                 <li class="menu__item menu__item_active">
                     <a href="#">Сводка</a>

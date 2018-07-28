@@ -28,13 +28,13 @@
 }
 
 .burger {
-  width: 16px;
-  height: 2px;
+  width: 1.6rem;
+  height: 0.2rem;
   position: relative;
   background-color: currentColor;
-  border-radius: 10px;
+  border-radius: 1rem;
   float: right;
-  margin-top: 6px;
+  margin-top: 0.6rem;
 
   display: none;
   @include phone {
@@ -44,13 +44,13 @@
   &::before,
   &::after {
     content: " ";
-    width: 16px;
-    height: 2px;
+    width: 1.6rem;
+    height: 0.2rem;
     position: absolute;
-    top: -5px;
+    top: -0.5rem;
     left: 0px;
     background-color: currentColor;
-    border-radius: 10px;
+    border-radius: 1rem;
     transition: transform ease 0.25s;
   }
   &::before {
@@ -63,33 +63,93 @@
 
   &__menu {
     position: absolute;
-    display: none;
+    visibility: hidden;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
     background-color: #333333;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 0;
     color: #fff;
-    z-index: 99999999999;
+
+    transition: all ease 0.25s;
+  }
+
+  &__menu-list {
+    display: flex;
+    flex-flow: column nowrap;
+    font-size: 3rem;
+  }
+
+  &__menu-list-item {
+    position: relative;
+    margin: 2rem 3rem 2rem 0;
+    transform: translateX(-500%);
+
+    &:first-child {
+      margin-top: 0;
+      transition: transform ease 0.1s 0.25s;
+    }
+
+    &:nth-child(2) {
+      transition: transform ease 0.1s 0.35s;
+    }
+
+    &:nth-child(3) {
+      transition: transform ease 0.1s 0.45s;
+    }
+
+    &:active {
+      font-weight: bolder;
+    }
+
+    &_active {
+      font-weight: bolder;
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        right: -3rem;
+        transform: translateY(-50%);
+      }
+    }
   }
 }
 
 #burger {
   position: relative;
+
   &:checked ~ :last-child {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    visibility: visible;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    .burger__menu-list-item {
+      transform: translateX(0);
+    }
   }
   &:checked + div {
     background-color: transparent;
+    z-index: 2;
 
     &::before {
+      background-color: white;
       transform: rotate(45deg) translate(2px, -3px);
     }
 
     &::after {
+      background-color: white;
       transform: rotate(-45deg) translate(2px, 2px);
     }
   }

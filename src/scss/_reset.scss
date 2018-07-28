@@ -94,7 +94,7 @@ video {
 
 html {
   font-size: 62.5%; /* font-size 1em = 10px on default browser settings */
-  font-family: Arial-BoldMT;
+  font-family: Arial;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -155,4 +155,9 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
 }

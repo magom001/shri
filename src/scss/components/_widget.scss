@@ -166,10 +166,10 @@
 
       @include phone {
         flex-flow: row nowrap;
-        height: 12rem;
+        height: 13rem;
         min-height: 12rem;
         padding: 0;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
       }
     }
   }
@@ -227,7 +227,7 @@
 
   &__status {
     display: block;
-    font-family: Arial-MT;
+    font-family: Arial;
     font-size: 1.4rem;
     margin-bottom: 2rem;
 
