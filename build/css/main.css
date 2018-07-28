@@ -222,6 +222,7 @@ a:active {
   min-width: 133rem;
   height: 100vh;
   margin: 0 auto;
+  padding-bottom: calc(6.4rem + 2rem);
   -webkit-filter: blur(0px);
           filter: blur(0px);
   transition: 0.3s -webkit-filter linear;
@@ -239,10 +240,8 @@ a:active {
     display: block;
     min-width: 0rem;
     width: 100vw;
-    height: unset;
     margin: 0;
-    overflow-x: hidden;
-    min-height: 100vh;
+    overflow: hidden;
   }
 }
 
@@ -276,7 +275,7 @@ a:active {
         -ms-flex-pack: justify;
             justify-content: space-between;
     border-bottom: none;
-    max-height: 7rem;
+    max-height: 6rem;
     position: fixed;
     top: 0px;
     left: 0;
@@ -290,13 +289,6 @@ a:active {
   width: auto;
 }
 
-@media (max-width: 425px) {
-  .header__logo {
-    height: 2rem;
-    width: auto;
-  }
-}
-
 .content {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -308,17 +300,91 @@ a:active {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  padding: 3rem 3rem;
+  padding: 3rem;
 }
 
 @media (max-width: 425px) {
   .content {
-    margin-top: 7rem;
+    margin-top: 6rem;
     overflow-y: scroll;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 6rem);
   }
   .content::-webkit-scrollbar {
     display: none;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 6.4rem;
+  width: 100%;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  color: #858585;
+}
+
+@media (max-width: 425px) {
+  .footer {
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: auto;
+  }
+}
+
+.footer__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 425px) {
+  .footer__menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+}
+
+.footer__menu-item:not(:last-child) {
+  margin-right: 2rem;
+}
+
+@media (max-width: 425px) {
+  .footer__menu-item:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+.footer__menu-item:hover {
+  border-bottom: 1px solid #858585;
+}
+
+@media (max-width: 425px) {
+  .footer__copyright {
+    margin-top: 3rem;
   }
 }
 
@@ -453,7 +519,7 @@ a:active {
   background-color: currentColor;
   border-radius: 1rem;
   float: right;
-  margin-top: 0.6rem;
+  margin-top: 0.4rem;
   display: none;
 }
 
@@ -523,7 +589,7 @@ a:active {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 .burger__menu-list-item {
@@ -531,6 +597,8 @@ a:active {
   margin: 2rem 3rem 2rem 0;
   -webkit-transform: translateX(-500%);
           transform: translateX(-500%);
+  display: block;
+  width: 25rem;
 }
 
 .burger__menu-list-item:first-child {
@@ -615,6 +683,7 @@ a:active {
   position: relative;
   height: 60px;
   width: 58rem;
+  font-weight: 700;
 }
 
 .range-slider input[type="range"] {
@@ -720,18 +789,22 @@ a:active {
   pointer-events: none;
   color: #ffffff;
   letter-spacing: 0;
-  text-align: left;
-  top: calc(50% - 8px);
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  top: 0;
 }
 
 .range-slider::before {
-  left: 20px;
+  left: 0px;
   content: attr(data-range-min);
   z-index: 1;
 }
 
 .range-slider::after {
-  right: 20px;
+  right: 0px;
   content: attr(data-range-max);
 }
 
@@ -1135,7 +1208,7 @@ a:active {
 
 .widget-main__weather-location {
   display: block;
-  font-family: ArialMT;
+  font-family: Arial;
   font-size: 1.4rem;
   color: #858585;
 }
@@ -1147,7 +1220,7 @@ a:active {
 }
 
 .widget-main__weather-temperature {
-  font-family: Arial-BoldMT;
+  font-family: Arial;
   font-weight: bolder;
   font-size: 3.6rem;
   letter-spacing: 0;
@@ -1402,8 +1475,9 @@ a:active {
 }
 
 .modal__name {
-  font-family: Arial-BoldMT;
+  font-family: Arial;
   font-size: 2.7rem;
+  font-weight: bolder;
   color: #333333;
   margin-bottom: 1rem;
 }
@@ -1431,7 +1505,8 @@ a:active {
 }
 
 .modal__indication-digit {
-  font-family: Arial-BoldMT;
+  font-family: Arial;
+  font-weight: bolder;
   font-size: 3.6rem;
   color: #333333;
   letter-spacing: 0;

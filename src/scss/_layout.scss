@@ -10,6 +10,7 @@
   min-width: 133rem;
   height: 100vh;
   margin: 0 auto;
+  padding-bottom: calc(#{$footerHeight} + 2rem);
   filter: blur(0px);
   transition: 0.3s -webkit-filter linear;
 
@@ -20,11 +21,8 @@
     display: block;
     min-width: 0rem;
     width: 100vw;
-    height: unset;
     margin: 0;
-    overflow-x: hidden;
-    min-height: 100vh;
-    // padding: 0rem 3rem;
+    overflow: hidden;
   }
 
   &.blurred {
@@ -56,11 +54,6 @@
     margin-right: 3rem;
     height: 2.7rem;
     width: auto;
-
-    @include phone {
-      height: 2rem;
-      width: auto;
-    }
   }
 }
 
@@ -69,14 +62,65 @@
 
   display: flex;
   flex-flow: row wrap;
-  padding: 3rem 3rem;
+  padding: $contentPadding;
 
   @include phone {
-    margin-top: 7rem;
+    margin-top: $maxHeaderHeightMobileDevices;
     overflow-y: scroll;
     height: calc(100vh - #{$maxHeaderHeightMobileDevices});
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 6.4rem;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #858585;
+
+  @include phone {
+    position: relative;
+    flex-flow: column nowrap;
+    align-items: start;
+    justify-content: space-around;
+    height: auto;
+  }
+
+  &__menu {
+    display: flex;
+
+    @include phone {
+      flex-flow: column nowrap;
+      flex-grow: 1;
+    }
+  }
+
+  &__menu-item {
+    &:not(:last-child) {
+      margin-right: 2rem;
+      @include phone {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &:hover {
+      border-bottom: 1px solid #858585;
+    }
+  }
+
+  &__copyright {
+    @include phone {
+      margin-top: 3rem;
     }
   }
 }
