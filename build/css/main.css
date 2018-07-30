@@ -922,9 +922,9 @@ a:active {
 
 @supports (-moz-appearance: meterbar) {
   .widget {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 45%;
-            flex: 0 0 45%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 45%;
+            flex: 1 0 45%;
   }
 }
 
@@ -1085,6 +1085,12 @@ a:active {
   }
 }
 
+@supports (-moz-appearance: meterbar) {
+  .widget-main__info {
+    overflow: hidden;
+  }
+}
+
 .widget-main__column {
   display: inline-block;
 }
@@ -1124,7 +1130,8 @@ a:active {
 
 @supports (-moz-appearance: meterbar) {
   .widget-main__column_right {
-    overflow: -moz-scrollbars-none;
+    overflow-x: hidden;
+    margin-right: -1.6rem;
   }
 }
 
