@@ -70,6 +70,8 @@
 }
 
 .widget-appliances {
+  flex: 1 0 auto;
+
   &__content {
     display: flex;
     width: calc(100vw - 3rem);

@@ -1,4 +1,4 @@
-export class Scroll {
+export class PageScroll {
   constructor(leftBtn, rightBtn, scrollTarget) {
     this.leftBtn = leftBtn;
     this.rightBtn = rightBtn;

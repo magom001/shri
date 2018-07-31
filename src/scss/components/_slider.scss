@@ -92,6 +92,9 @@
   input[type="range"]::-moz-range-track {
     @include track($gradient, $width, $height);
   }
+  input[type="range"]::-moz-focus-outer {
+    border: 0; // REMOVE DOTTED OUTLINE AROUND INPUT IN FIREFOX
+  }
   input[type="range"]::-ms-track {
     width: 100%;
     height: $height;

@@ -11,11 +11,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/main.css?v=1.0">
+    <link rel="stylesheet" href="build/css/main.css?v=1.0">
 
     <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  <![endif]-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -482,7 +482,7 @@
     </svg>
     <section id="page-wrapper">
         <header class="header">
-            <img class="header__logo" src="./assets/images/logo.svg">
+            <img class="header__logo" src="./build/assets/images/logo.svg">
 
             <label for="burger" style="width:1.6rem">
                 <input id="burger" type="checkbox" style="display:none" />
@@ -732,6 +732,17 @@
             <article class="widget widget-appliances">
                 <header class="widget__header">
                     <h1 class="widget__title">Избранные устройства</h1>
+                    <div class="widget__scroll">
+
+                        <svg role="img" class="widget__scroll_left widget__scroll_disabled">
+                            <use xlink:href="#arrow_left"></use>
+                        </svg>
+
+                        <svg role="img" class="widget__scroll_right widget__scroll_disabled">
+                            <use xlink:href="#arrow_left"></use>
+                        </svg>
+
+                    </div>
                 </header>
                 <section class="widget__content widget-appliances__content">
 
@@ -945,7 +956,7 @@
     </div>
 
     <!-- <script src="js/polyfill.min.js"></script> -->
-    <script src="js/bundle.js"></script>
+    <script src="build/js/bundle.js"></script>
 </body>
 
 </html>
