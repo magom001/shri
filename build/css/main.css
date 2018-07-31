@@ -1,3 +1,6 @@
+/** 
+ * Generates the image in either standard size or retina display version
+ */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -217,6 +220,9 @@ a:active {
           transform: rotate(-90deg);
 }
 
+/** 
+ * Generates the image in either standard size or retina display version
+ */
 .frozen {
   overflow: hidden !important;
   overflow-x: hidden !important;
@@ -305,6 +311,11 @@ a:active {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
   padding: 3rem;
 }
 
@@ -688,8 +699,9 @@ a:active {
 .range-slider {
   display: inline-block;
   position: relative;
-  height: 60px;
+  height: 6rem;
   width: 58rem;
+  height: 6rem;
   font-weight: 700;
 }
 
@@ -711,6 +723,12 @@ a:active {
   }
 }
 
+@supports (-ms-ime-align: auto) {
+  .range-slider input[type="range"] {
+    margin-top: -0.5rem;
+  }
+}
+
 .range-slider input[type="range"]:focus {
   outline: none;
 }
@@ -720,7 +738,7 @@ a:active {
   background-image: -webkit-gradient(linear, right top, left top, from(#ff9e00), to(#ffe682));
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
   width: 100%;
-  height: 60px;
+  height: 6rem;
   border-radius: 60px;
 }
 
@@ -751,7 +769,7 @@ a:active {
   /* common styles */
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
   width: 100%;
-  height: 60px;
+  height: 6rem;
   border-radius: 60px;
 }
 
@@ -761,7 +779,7 @@ a:active {
 
 .range-slider input[type="range"]::-ms-track {
   width: 100%;
-  height: 60px;
+  height: 6rem;
   cursor: pointer;
   background-image: linear-gradient(to left, #ff9e00, #ffe682 100%);
   border: 0px solid transparent;
@@ -775,9 +793,9 @@ a:active {
 }
 
 .range-slider input[type="range"]::-ms-thumb {
-  height: 60px;
-  width: 60px;
-  border-radius: 60px;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 6rem;
   background: transparent;
   cursor: pointer;
   border: 5px solid white;
@@ -838,20 +856,27 @@ a:active {
 .range-slider_sun::before, .range-slider_sun::after, .range-slider[device-type="brightness"]::before, .range-slider[device-type="brightness"]::after {
   content: "";
   background-image: url(../assets/images/icon_sun_3.svg);
-  background-size: 36px 36px;
+  background-size: 3.6rem 3.6rem;
   background-repeat: no-repeat;
-  width: 36px;
-  height: 36px;
-  top: 12px;
+  background-position: center;
+  width: 6rem;
+  height: 6rem;
 }
 
 .range-slider_sun::before, .range-slider[device-type="brightness"]::before {
   background-image: url(../assets/images/icon_sun_4.svg);
-  left: 12px;
 }
 
-.range-slider_sun::after, .range-slider[device-type="brightness"]::after {
-  right: 12px;
+@supports (-ms-ime-align: auto) {
+  .range-slider_sun::before, .range-slider[device-type="brightness"]::before {
+    background-position: 70% center;
+  }
+}
+
+@supports (-ms-ime-align: auto) {
+  .range-slider_sun::after, .range-slider[device-type="brightness"]::after {
+    background-position: 30% center;
+  }
 }
 
 .range-slider_vertical {
@@ -917,11 +942,15 @@ a:active {
           flex-grow: 1;
 }
 
+/** 
+ * Generates the image in either standard size or retina display version
+ */
 .widget {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50%;
           flex: 0 0 50%;
   width: 50%;
+  margin-bottom: 2rem;
 }
 
 @supports (-moz-appearance: meterbar) {
@@ -1079,11 +1108,16 @@ a:active {
   display: -ms-flexbox;
   display: flex;
   min-height: 33rem;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.25)), to(rgba(255, 255, 255, 0.25))), url(../assets/images/interior_1280.jpg);
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), url(../assets/images/interior_1280.jpg);
-  background-size: cover, cover;
-  background-repeat: no-repeat;
+  background: url("../assets/images/bg@1x.png") no-repeat center;
+  background-size: cover;
   border-radius: 2rem;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min--moz-device-pixel-ratio: 2), screen and (-moz-min-device-pixel-ratio: 2), screen and (min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
+  .widget-main__info {
+    background: url("../assets/images/bg@2x.png") no-repeat center;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 425px) {
@@ -1349,6 +1383,9 @@ a:active {
   margin-top: 0.5rem;
 }
 
+/** 
+ * Generates the image in either standard size or retina display version
+ */
 .ready {
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;

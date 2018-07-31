@@ -3,6 +3,7 @@
 .widget {
   flex: 0 0 50%;
   width: 50%;
+  margin-bottom: 2rem;
 
   @include Firefox {
     flex: 1 0 45%;
@@ -123,15 +124,10 @@
   &__info {
     display: flex;
     min-height: 33rem;
-
-    background-image: linear-gradient(
-        to right,
-        rgba(#fff, 0.25) 0%,
-        rgba(#fff, 0.25) 100%
-      ),
-      url(../assets/images/interior_1280.jpg);
-    background-size: cover, cover;
-    background-repeat: no-repeat;
+    @include imgRetina("../assets/images/bg", "png");
+    // background-image: url(../assets/images/bg@1x.png);
+    // background-size: cover;
+    // background-repeat: no-repeat;
     border-radius: 2rem;
 
     @include phone {

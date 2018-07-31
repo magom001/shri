@@ -51,7 +51,7 @@
 
 .range-slider {
   $width: 100%;
-  $height: 60px;
+  $height: 6rem;
   $gradient: linear-gradient(to left, #ff9e00, #ffe682 100%);
   $gradient_rainbow: linear-gradient(
     90deg,
@@ -63,6 +63,7 @@
   position: relative;
   height: $height;
   width: 58rem;
+  height: $height;
   font-weight: 700;
   input[type="range"] {
     -webkit-appearance: none;
@@ -72,6 +73,9 @@
     padding: 0;
     @include Firefox {
       transform: translateY(125%);
+    }
+    @include Edge {
+      margin-top: -0.5rem;
     }
   }
   input[type="range"]:focus {
@@ -167,18 +171,23 @@
     &::after {
       content: "";
       background-image: url(../assets/images/icon_sun_3.svg);
-      background-size: 36px 36px;
+      background-size: 3.6rem 3.6rem;
       background-repeat: no-repeat;
-      width: 36px;
-      height: 36px;
-      top: 12px;
+      background-position: center;
+      width: 6rem;
+      height: 6rem;
+      // top: 1.2rem;
     }
     &::before {
       background-image: url(../assets/images/icon_sun_4.svg);
-      left: 12px;
+      @include Edge {
+        background-position: 70% center;
+      }
     }
     &::after {
-      right: 12px;
+      @include Edge {
+        background-position: 30% center;
+      }
     }
   }
   &_vertical {
