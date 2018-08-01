@@ -60,6 +60,24 @@
       flex-grow: 1;
       margin-bottom: 1.5rem;
     }
+
+    &[device-type="temperature"] {
+      .modal__command-bar {
+        display: none;
+      }
+    }
+
+    &[device-type="brightness"] {
+      .modal__command-bar-button:not([brightness]) {
+        display: none;
+      }
+    }
+
+    &[device-type="cooling"] {
+      .modal__command-bar-button:not([cooling]) {
+        display: none;
+      }
+    }
   }
 
   &__header {

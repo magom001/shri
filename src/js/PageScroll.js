@@ -42,9 +42,9 @@ export class PageScroll {
   }
 
   enableBtn(btn) {
-    btn.classList.remove("widget__scroll_disabled");
+    btn.removeAttribute("disabled");
   }
   disableBtn(btn) {
-    btn.classList.add("widget__scroll_disabled");
+    btn.setAttribute("disabled", true);
   }
 }

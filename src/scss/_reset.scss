@@ -160,6 +160,9 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  @include phone {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 button {

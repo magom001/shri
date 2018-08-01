@@ -7,7 +7,13 @@
   overflow-y: hidden !important;
 }
 
+.spacer {
+  flex-grow: 1000;
+}
+
 body {
+  position: absolute;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   overscroll-behavior: contain;
@@ -28,8 +34,10 @@ body {
     display: block;
     min-width: 0rem;
     width: 100vw;
+    height: 100vh;
     margin: 0;
     overflow: hidden;
+    position: absolute;
   }
 
   &.blurred {
@@ -52,7 +60,7 @@ body {
     border-bottom: none;
     max-height: $maxHeaderHeightMobileDevices;
     position: fixed;
-    top: 0px;
+    top: 0;
     left: 0;
     width: 100%;
   }
@@ -77,6 +85,7 @@ body {
     margin-top: $maxHeaderHeightMobileDevices;
     overflow-y: scroll;
     height: calc(100vh - #{$maxHeaderHeightMobileDevices});
+
     &::-webkit-scrollbar {
       display: none;
     }

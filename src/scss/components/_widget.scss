@@ -15,6 +15,7 @@
   }
 
   &__header {
+    position: relative;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -24,6 +25,12 @@
   &__title {
     font-size: 1.8rem;
     font-weight: bolder;
+
+    @include phone {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   &__scroll {
@@ -73,7 +80,11 @@
     @include phone {
       overflow-x: auto;
       min-height: 0rem;
-      width: calc(100vw - 3rem);
+
+      width: 100vw;
+      transform: translateX(-3rem);
+      padding: 0 3rem;
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -84,15 +95,79 @@
 .widget-appliances {
   flex: 1 0 auto;
 
+  @include phone {
+    .spacer {
+      display: none;
+    }
+  }
+
   &__content {
     display: flex;
-    width: calc(100vw - 3rem);
     overflow: hidden;
+
+    width: 100vw;
+    transform: translateX(-3rem);
+    padding: 0 3rem;
 
     @include phone {
       overflow: auto;
       &::-webkit-scrollbar {
         display: none;
+      }
+    }
+  }
+
+  &__filters {
+    margin: 0 2rem;
+
+    @include phone {
+      position: absolute;
+      right: 0;
+
+      margin: 0;
+
+      transform-origin: right center;
+      transform: scale(0.5);
+      &::after {
+        content: "";
+        position: absolute;
+        right: 3rem;
+        top: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        transform-origin: right center;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+
+    &-select {
+      display: none;
+      appearance: none;
+      outline: none;
+      border-radius: 4rem;
+      background-color: #ffd93e;
+      padding: 1.4rem 2.8rem;
+      font-weight: bolder;
+      font-size: 2.6rem;
+      color: #000000;
+      text-align: left;
+      border: none;
+      width: 14rem;
+      padding-right: 6rem;
+      @include phone {
+        display: inline-block;
+      }
+    }
+
+    &-button {
+      @include phone {
+        display: none;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1rem;
       }
     }
   }
@@ -167,7 +242,8 @@
       flex-flow: column nowrap;
       min-height: inherit;
       justify-content: space-between;
-      overflow: scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -180,6 +256,8 @@
       }
 
       @include phone {
+        overflow-y: hidden;
+        overflow-x: auto;
         flex-flow: row nowrap;
         height: 13rem;
         min-height: 12rem;

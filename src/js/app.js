@@ -1,5 +1,6 @@
 import "babel-polyfill";
 import "classlist-polyfill";
+import isMobile from "is-mobile";
 
 import { Modal } from "./Modal";
 import { PageScroll } from "./PageScroll";
@@ -8,15 +9,17 @@ class App {
   constructor() {
     this.cancelScroll = this.cancelScroll.bind(this);
     this.scroll = this.scroll.bind(this);
-
+    this.IS_MOBILE = isMobile();
     this.init();
   }
 
   init() {
-    this.setupSelectedScenariosScroll();
-    this.setupSelectedAppliancesScroll();
     this.setupModal();
-    this.setupMainWidgetScroll();
+    if (!this.IS_MOBILE) {
+      this.setupSelectedScenariosScroll();
+      this.setupSelectedAppliancesScroll();
+      this.setupMainWidgetScroll();
+    }
   }
 
   cancelScroll() {
@@ -30,6 +33,10 @@ class App {
 
     if (this.widgetAppliancesContent.scrollLeft > 0) {
       this.widgetAppliancesScrollLeftBtn.removeAttribute("disabled");
+    } else {
+      this.widgetAppliancesScrollLeftBtn.setAttribute("disabled", true);
+      this.cancelScroll();
+      return;
     }
 
     if (
@@ -38,6 +45,10 @@ class App {
         this.widgetAppliancesContentWidth
     ) {
       this.widgetAppliancesScrollRightBtn.removeAttribute("disabled");
+    } else {
+      this.widgetAppliancesScrollRightBtn.setAttribute("disabled", true);
+      this.cancelScroll();
+      return;
     }
 
     this.requestID = requestAnimationFrame(() => this.scroll(value));
@@ -74,6 +85,11 @@ class App {
     );
     this.widgetAppliancesContentWidth = this.widgetAppliancesContent.getBoundingClientRect().width;
     this.widgetAppliancesContentScrollWidth = this.widgetAppliancesContent.scrollWidth;
+
+    this.widgetAppliancesContent.addEventListener("wheel", e => {
+      this.scroll(e.deltaY);
+      this.cancelScroll();
+    });
 
     this.widgetAppliancesScrollLeftBtn.addEventListener("mousedown", () => {
       this.scroll(-10);

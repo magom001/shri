@@ -576,14 +576,16 @@
                 <header class="widget__header">
                     <h1 class="widget__title">Избранные сценарии</h1>
                     <div class="widget__scroll" id="scenarios-scroll" data-target="scenarios">
-
-                        <svg role="img" class="widget__scroll_left widget__scroll_disabled">
-                            <use xlink:href="#arrow_left"></use>
-                        </svg>
-
-                        <svg role="img" class="widget__scroll_right widget__scroll_disabled">
-                            <use xlink:href="#arrow_left"></use>
-                        </svg>
+                        <button class="widget__scroll_left" disabled>
+                            <svg role="img">
+                                <use xlink:href="#arrow_left"></use>
+                            </svg>
+                        </button>
+                        <button class="widget__scroll_right">
+                            <svg role="img">
+                                <use xlink:href="#arrow_left"></use>
+                            </svg>
+                        </button>
 
                     </div>
                 </header>
@@ -592,7 +594,7 @@
                         <li class="page__content">
                             <div data-type="radial" data-active="active" data-status="Включено" data-device="Xiaomi Warm Floor" data-min="-5" data-max="30"
                                 data-value="+23" class="action-box page__item">
-                                <i device-type="brightness" device-active="active" class="action-box__icon icon"></i>
+                                <i device-type="temperature" device-active="active" class="action-box__icon icon"></i>
                                 <div class="action-box__action">
                                     <span class="action-box__device">Выключить весь свет в доме и во дворе</span>
 
@@ -697,6 +699,21 @@
             <article class="widget widget-appliances">
                 <header class="widget__header">
                     <h1 class="widget__title">Избранные устройства</h1>
+                    <nav class="widget-appliances__filters">
+                        <button class="widget-appliances__filters-button btn btn_primary btn_flex">Все</button>
+                        <button class="widget-appliances__filters-button btn btn_default btn_flex">Кухня</button>
+                        <button class="widget-appliances__filters-button btn btn_default btn_flex">Зал</button>
+                        <button class="widget-appliances__filters-button btn btn_default btn_flex">Ламопчки</button>
+                        <button class="widget-appliances__filters-button btn btn_default btn_flex">Камеры</button>
+                        <select class="widget-appliances__filters-select">
+                            <option>Все</option>
+                            <option>Кухня</option>
+                            <option>Зал</option>
+                            <option>Лампочки</option>
+                            <option>Камеры</option>
+                        </select>
+                    </nav>
+                    <div class="spacer"></div>
                     <div class="widget__scroll widget-appliances__scroll">
                         <button class="widget__scroll_left" disabled>
                             <svg role="img">
@@ -898,10 +915,13 @@
                     </div>
                 </div>
                 <div class="modal__command-bar">
-                    <button class="modal__command-bar-button btn btn_primary btn_flex">Вручную</button>
-                    <button class="modal__command-bar-button btn btn_flex">Дневной свет</button>
-                    <button class="modal__command-bar-button btn btn_flex">Вечерный свет</button>
-                    <button class="modal__command-bar-button btn btn_flex">Рассвет</button>
+                    <button class="modal__command-bar-button btn btn_primary btn_flex" brightness cooling>Вручную</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" brightness>Дневной свет</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" brightness>Вечерный свет</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" brightness>Рассвет</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" cooling>Холодно</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" cooling>Тепло</button>
+                    <button class="modal__command-bar-button btn btn_default btn_flex" cooling>Жарко</button>
                 </div>
                 <div class="modal__content">
 

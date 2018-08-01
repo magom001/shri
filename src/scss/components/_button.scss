@@ -4,6 +4,7 @@
   font-size: 1.3rem;
   color: #333333;
 
+  text-align: center;
   letter-spacing: 0;
 
   border: none;
@@ -27,6 +28,10 @@
   &_primary {
     color: #000000;
     background: #ffd93e;
+  }
+
+  &_default {
+    background: #f7f7f7;
   }
 
   &_large {

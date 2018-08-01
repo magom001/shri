@@ -163,6 +163,7 @@ export class Modal {
 
     if (!deviceType) deviceType = "temperature";
 
+    this.modalWrapper.setAttribute("device-type", deviceType);
     this.modalDeviceType.setAttribute("device-type", deviceType);
     this.modalDeviceType.setAttribute("device-active", active);
     this.modalDeviceName.textContent = device;
