@@ -39,6 +39,17 @@
       width: 1.3rem;
       height: 0.8rem;
       cursor: pointer;
+
+      &[disabled] {
+        opacity: 0.3;
+        cursor: default;
+      }
+
+      & svg {
+        pointer-events: none;
+        width: inherit;
+        height: inherit;
+      }
     }
     &_left {
       transform: rotate(90deg);

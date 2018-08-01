@@ -162,9 +162,30 @@ html {
           box-sizing: inherit;
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+  background: transparent;
+  text-align: inherit;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 
 body {
@@ -203,6 +224,10 @@ a:active {
   background-image: url(../assets/images/icon_sun.svg);
 }
 
+.icon_sun--active, .icon[device-type="brightness"][device-active="active"] {
+  background-image: url(../assets/images/icon_sun_2.svg);
+}
+
 .icon_cloud {
   background-image: url(../assets/images/cloud-drizzle.svg);
 }
@@ -220,6 +245,12 @@ a:active {
           transform: rotate(-90deg);
 }
 
+.icon_scheduled {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url(../assets/images/icon_scheduled.svg) !important;
+}
+
 /** 
  * Generates the image in either standard size or retina display version
  */
@@ -227,6 +258,13 @@ a:active {
   overflow: hidden !important;
   overflow-x: hidden !important;
   overflow-y: hidden !important;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
 }
 
 #page-wrapper {
@@ -439,6 +477,11 @@ a:active {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 @media (max-width: 425px) {
@@ -1006,6 +1049,17 @@ a:active {
   width: 1.3rem;
   height: 0.8rem;
   cursor: pointer;
+}
+
+.widget__scroll_left[disabled], .widget__scroll_right[disabled] {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.widget__scroll_left svg, .widget__scroll_right svg {
+  pointer-events: none;
+  width: inherit;
+  height: inherit;
 }
 
 .widget__scroll_left {

@@ -6,13 +6,41 @@ import { PageScroll } from "./PageScroll";
 
 class App {
   constructor() {
+    this.cancelScroll = this.cancelScroll.bind(this);
+    this.scroll = this.scroll.bind(this);
+
     this.init();
   }
 
   init() {
     this.setupSelectedScenariosScroll();
+    this.setupSelectedAppliancesScroll();
     this.setupModal();
     this.setupMainWidgetScroll();
+  }
+
+  cancelScroll() {
+    this.isScrolling = false;
+    cancelAnimationFrame(this.requestID);
+  }
+
+  scroll(value) {
+    this.isScrolling = true;
+    this.widgetAppliancesContent.scrollLeft += value;
+
+    if (this.widgetAppliancesContent.scrollLeft > 0) {
+      this.widgetAppliancesScrollLeftBtn.removeAttribute("disabled");
+    }
+
+    if (
+      this.widgetAppliancesContent.scrollLeft <
+      this.widgetAppliancesContentScrollWidth -
+        this.widgetAppliancesContentWidth
+    ) {
+      this.widgetAppliancesScrollRightBtn.removeAttribute("disabled");
+    }
+
+    this.requestID = requestAnimationFrame(() => this.scroll(value));
   }
 
   setupModal() {
@@ -27,6 +55,38 @@ class App {
       },
       true
     );
+  }
+
+  /**
+   *
+   * Setup selected appliances horizontal scroll
+   *
+   */
+  setupSelectedAppliancesScroll() {
+    this.widgetAppliancesScrollRightBtn = document
+      .querySelector(".widget-appliances__scroll")
+      .querySelector(".widget__scroll_right");
+    this.widgetAppliancesScrollLeftBtn = document
+      .querySelector(".widget-appliances__scroll")
+      .querySelector(".widget__scroll_left");
+    this.widgetAppliancesContent = document.querySelector(
+      ".widget-appliances__content"
+    );
+    this.widgetAppliancesContentWidth = this.widgetAppliancesContent.getBoundingClientRect().width;
+    this.widgetAppliancesContentScrollWidth = this.widgetAppliancesContent.scrollWidth;
+
+    this.widgetAppliancesScrollLeftBtn.addEventListener("mousedown", () => {
+      this.scroll(-10);
+    });
+
+    this.widgetAppliancesScrollRightBtn.addEventListener("mousedown", () => {
+      this.scroll(10);
+    });
+    document.addEventListener("mouseup", () => {
+      if (this.isScrolling) {
+        this.cancelScroll();
+      }
+    });
   }
 
   /**

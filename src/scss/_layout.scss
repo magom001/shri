@@ -7,6 +7,12 @@
   overflow-y: hidden !important;
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
 #page-wrapper {
   min-width: 133rem;
   height: 100vh;
@@ -150,6 +156,8 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
 
     @include phone {
       justify-content: flex-start;

@@ -26,6 +26,11 @@
     background-image: url(../assets/images/icon_sun.svg);
   }
 
+  &_sun--active,
+  &[device-type="brightness"][device-active="active"] {
+    background-image: url(../assets/images/icon_sun_2.svg);
+  }
+
   &_cloud {
     background-image: url(../assets/images/cloud-drizzle.svg);
   }
@@ -40,5 +45,11 @@
   &_arrow-right {
     @extend .icon_arrow-left;
     transform: rotate(-90deg);
+  }
+
+  &_scheduled {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-image: url(../assets/images/icon_scheduled.svg) !important;
   }
 }
