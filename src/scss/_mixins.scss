@@ -1,7 +1,8 @@
 $phone-width-s: 320px;
 $phone-width: 425px;
 $tablet-width: 768px;
-$desktop-width: 1024px;
+$min-small-desktop-width: 1024px;
+$max-small-desktop-width: 1300px;
 
 @mixin phone-s {
   @media (max-width: #{$phone-width-s}) {
@@ -16,19 +17,19 @@ $desktop-width: 1024px;
 }
 
 @mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$min-small-desktop-width - 1px}) {
     @content;
   }
 }
 
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
+@mixin smallDesktop {
+  @media (min-width: #{$min-small-desktop-width})  and (max-width: #{$max-small-desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin IE {
-  @media all and (-ms-high-contrast: none) {
+  @media all and (-ms-high-contrast: none) and (max-width: #{$min-small-desktop-width - 1px}) {
     @content;
   }
 }
@@ -48,13 +49,7 @@ $desktop-width: 1024px;
 /** 
  * Generates the image in either standard size or retina display version
  */
-@mixin imgRetina(
-  $image,
-  $extension,
-  $size: cover,
-  $position: center,
-  $repeat: no-repeat
-) {
+@mixin imgRetina($image, $extension, $size: cover, $position: center, $repeat: no-repeat) {
   background: url($image+"@1x"+"."+$extension) $repeat $position;
   background-size: $size;
 

@@ -41,8 +41,7 @@ class App {
 
     if (
       this.widgetAppliancesContent.scrollLeft <
-      this.widgetAppliancesContentScrollWidth -
-        this.widgetAppliancesContentWidth
+      this.widgetAppliancesContentScrollWidth - this.widgetAppliancesContentWidth
     ) {
       this.widgetAppliancesScrollRightBtn.removeAttribute("disabled");
     } else {
@@ -80,9 +79,7 @@ class App {
     this.widgetAppliancesScrollLeftBtn = document
       .querySelector(".widget-appliances__scroll")
       .querySelector(".widget__scroll_left");
-    this.widgetAppliancesContent = document.querySelector(
-      ".widget-appliances__content"
-    );
+    this.widgetAppliancesContent = document.querySelector(".widget-appliances__content");
     this.widgetAppliancesContentWidth = this.widgetAppliancesContent.getBoundingClientRect().width;
     this.widgetAppliancesContentScrollWidth = this.widgetAppliancesContent.scrollWidth;
 
@@ -95,10 +92,25 @@ class App {
       this.scroll(-10);
     });
 
+    this.widgetAppliancesScrollLeftBtn.addEventListener("touchstart", () => {
+      this.scroll(-10);
+    });
+
     this.widgetAppliancesScrollRightBtn.addEventListener("mousedown", () => {
       this.scroll(10);
     });
+
+    this.widgetAppliancesScrollRightBtn.addEventListener("touchstart", () => {
+      this.scroll(10);
+    });
+
     document.addEventListener("mouseup", () => {
+      if (this.isScrolling) {
+        this.cancelScroll();
+      }
+    });
+
+    document.addEventListener("touchend", () => {
       if (this.isScrolling) {
         this.cancelScroll();
       }
@@ -127,21 +139,15 @@ class App {
   setupMainWidgetScroll() {
     this.rightColumn = document.querySelector(".widget-main__column_right");
     this.rightColumnFirstChild = this.rightColumn.firstElementChild;
-    this.scrollIndicator = document.querySelector(
-      ".widget-main__scroll-indicator"
-    );
+    this.scrollIndicator = document.querySelector(".widget-main__scroll-indicator");
     this.rightColumn.addEventListener("scroll", () => {
       const rcRect = this.rightColumn.getBoundingClientRect();
       const rcFcRect = this.rightColumnFirstChild.getBoundingClientRect();
 
       if (Math.floor(rcRect.top + 20) > Math.ceil(rcFcRect.top)) {
-        this.scrollIndicator.classList.add(
-          "widget-main__scroll-indicator--hidden"
-        );
+        this.scrollIndicator.classList.add("widget-main__scroll-indicator--hidden");
       } else {
-        this.scrollIndicator.classList.remove(
-          "widget-main__scroll-indicator--hidden"
-        );
+        this.scrollIndicator.classList.remove("widget-main__scroll-indicator--hidden");
       }
     });
   }

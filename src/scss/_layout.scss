@@ -40,6 +40,16 @@ body {
     position: absolute;
   }
 
+  @include tablet {
+    display: block;
+    min-width: 0rem;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+  }
+
   &.blurred {
     filter: blur(2px);
   }
@@ -90,6 +100,16 @@ body {
       display: none;
     }
   }
+
+  @include tablet {
+    margin-top: 0;
+    overflow-y: scroll;
+    height: calc(100vh - #{$maxHeaderHeightMobileDevices});
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .footer {
@@ -108,6 +128,15 @@ body {
   color: #858585;
 
   @include phone {
+    position: relative;
+    flex-flow: column nowrap;
+    align-items: start;
+    justify-content: space-around;
+    height: auto;
+    padding: 0;
+  }
+
+  @include tablet {
     position: relative;
     flex-flow: column nowrap;
     align-items: start;
@@ -140,6 +169,10 @@ body {
 
   &__copyright {
     @include phone {
+      margin-top: 3rem;
+    }
+
+    @include tablet {
       margin-top: 3rem;
     }
   }

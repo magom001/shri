@@ -14,6 +14,11 @@
     margin-bottom: 4rem;
   }
 
+  @include tablet {
+    flex: 1 0 100%;
+    margin-bottom: 4rem;
+  }
+
   &__header {
     position: relative;
     margin-bottom: 2rem;
@@ -101,6 +106,12 @@
     }
   }
 
+  &__scroll {
+    @include tablet {
+      display: none;
+    }
+  }
+
   &__content {
     display: flex;
     overflow: hidden;
@@ -114,6 +125,17 @@
       &::-webkit-scrollbar {
         display: none;
       }
+    }
+
+    @include tablet {
+      overflow: auto;
+    }
+
+    @include smallDesktop {
+      transform: none;
+      padding: 0;
+      width: 100%;
+      overflow: auto;
     }
   }
 
@@ -190,6 +212,11 @@
     width: calc(100vw - 6rem);
   }
 
+  @include tablet {
+    margin-right: 0rem;
+    width: calc(100vw - 6rem);
+  }
+
   &__container {
     @include phone {
       margin-top: -3rem;
@@ -203,6 +230,10 @@
 
   &__header {
     @include phone {
+      display: none;
+    }
+
+    @include tablet {
       display: none;
     }
   }
